@@ -1,8 +1,10 @@
 package TreeUtils;
 
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Stack;
+import java.util.TreeMap;
 
 public class IterTraversal {
 
@@ -24,9 +26,142 @@ public class IterTraversal {
     inOrderTraversal(root);
     printLevelOrder(root);
     spiralTraversal(root);
+    MorisPreorderTraversal(root);
+    MorisInorderTraversal(root);
+    printTop(root);
+
   }
 
-  private static void spiralTraversal(Node root) {
+  // Pair class
+  static class Pair<U, V>
+  {
+    public final U first;   	// first field of a Pair
+    public final V second;  	// second field of a Pair
+
+    // Constructs a new Pair with specified values
+    private Pair(U first, V second)
+    {
+      this.first = first;
+      this.second = second;
+    }
+
+    // Factory method for creating a Typed Pair immutable instance
+    public static <U, V> Pair <U, V> of(U a, V b)
+    {
+      // calls private constructor
+      return new Pair<>(a, b);
+    }
+  }
+
+  public static void printTop(Node root, int dist, int level,
+      Map<Integer, Pair<Integer, Integer>> map)
+  {
+    // base case: empty tree
+    if (root == null) {
+      return;
+    }
+    // if current level is less than maximum level seen so far
+    // for the same horizontal distance or horizontal distance
+    // is seen for the first time, update the map
+    if (!map.containsKey(dist) || level < map.get(dist).second) {
+      // update value and level for current distance
+      map.put(dist, Pair.of(root.data, level));
+    }
+
+    // recur for left subtree by decreasing horizontal distance and
+    // increasing level by 1
+    printTop(root.left, dist - 1, level + 1, map);
+
+    // recur for right subtree by increasing both level and
+    // horizontal distance by 1
+    printTop(root.right, dist + 1, level + 1, map);
+  }
+
+  // Function to print the top view of given binary tree
+  public static void printTop(Node root)
+  {
+    // create a TreeMap where
+    // key -> relative horizontal distance of the node from root node and
+    // value -> pair containing node's value and its level
+    System.out.print("Top View :");
+    Map<Integer, Pair<Integer, Integer>> map = new TreeMap<>();
+
+    // do pre-order traversal of the tree and fill the map
+    printTop(root, 0, 0, map);
+
+    // traverse the TreeMap and print top view
+    for (Pair<Integer, Integer> it: map.values()) {
+      System.out.print(it.first + " ");
+    }
+  }
+
+  public static void MorisInorderTraversal(Node root) {
+    System.out.print("Morris Traversal In :");
+    Node current, pre;
+    if (root == null)
+      return;
+    current = root;
+    while (current != null) {
+      if (current.left == null) {
+        System.out.print(current.data + " ");
+        current = current.right;
+      }
+      else {
+        /* Find the inorder predecessor of current */
+        pre = current.left;
+        while (pre.right != null && pre.right != current)
+          pre = pre.right;
+
+        /* Make current as right child of its inorder predecessor */
+        if (pre.right == null) {
+          pre.right = current;
+          current = current.left;
+        }
+                /* Revert the changes made in the 'if' part to restore the
+                    original tree i.e., fix the right child of predecessor*/
+        else {
+          pre.right = null;
+          System.out.print(current.data + " ");
+          current = current.right;
+        } /* End of if condition pre->right == NULL */
+      } /* End of if condition current->left == NULL*/
+    } /* End of while */
+    System.out.println();
+  }
+
+  public static void MorisPreorderTraversal(Node node) {
+    System.out.print("Morris Traversal Pre :");
+    while (node != null) {
+      // If left child is null, print the current node data. Move to
+      // right child.
+      if (node.left == null) {
+        System.out.print(node.data + " ");
+        node = node.right;
+      } else {
+        // Find inorder predecessor
+        Node current = node.left;
+        while (current.right != null && current.right != node) {
+          current = current.right;
+        }
+        // If the right child of inorder predecessor
+        // already points to this node
+        if (current.right == node) {
+          current.right = null;
+          node = node.right;
+        }
+        // If right child doesn't point to this node, then print
+        // this node and make right child point to this node
+        else {
+          System.out.print(node.data + " ");
+          current.right = node;
+          node = node.left;
+        }
+      }
+    }
+    System.out.println();
+  }
+
+  public static void spiralTraversal(Node root) {
     Stack<Node> s1 = new Stack<Node>();
     Stack<Node> s2 = new Stack<Node>();
     System.out.print("SpiralOrder :");
@@ -54,7 +189,7 @@ public class IterTraversal {
     System.out.println();
   }
 
-  private static void printLevelOrder(Node root)
+  public static void printLevelOrder(Node root)
   {
     Queue<Node> queue = new LinkedList<Node>();
     queue.add(root);
@@ -76,7 +211,7 @@ public class IterTraversal {
     System.out.println();
   }
 
-  private static void inOrderTraversal(Node root) {
+  public static void inOrderTraversal(Node root) {
     Stack<Node> stack = new Stack();
     Node curr=root;
     System.out.print("Inorder  :");
@@ -97,7 +232,7 @@ public class IterTraversal {
     System.out.println();
   }
 
-  private static void postOrderTraversal(Node root) {
+  public static void postOrderTraversal(Node root) {
     Stack<Node> stack = new Stack();
     stack.push(root);
     System.out.print("PostOrder :");
@@ -129,7 +264,7 @@ public class IterTraversal {
 
   }
 
-  private static void preOrderTraversal(Node root) {
+  public static void preOrderTraversal(Node root) {
     Stack<Node> st=new Stack<>();
     st.push(root);
     System.out.print("PreOrder :");
