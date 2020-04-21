@@ -1,5 +1,6 @@
 package TreeUtils;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
@@ -29,6 +30,58 @@ public class IterTraversal {
     MorisPreorderTraversal(root);
     MorisInorderTraversal(root);
     printTop(root);
+    printVerticalOrder(root);
+    printBoundryNode(root);
+
+  }
+
+  private static void printBoundryNode(Node node) {
+    System.out.println("Print Boundry View");
+    if (node == null)
+      return;
+
+    System.out.print(node.data + " ");
+    printBoundaryLeft(node.left);
+    printLeaves(node.left);
+    printLeaves(node.right);
+    printBoundaryRight(node.right);
+    System.out.println();
+  }
+  private static void printLeaves(Node node)
+  {
+    if (node == null)
+      return;
+
+    printLeaves(node.left);
+    if (node.left == null && node.right == null)
+      System.out.print(node.data + " ");
+    printLeaves(node.right);
+  }
+  private static void printBoundaryLeft(Node node)
+  {
+    if (node == null)
+      return;
+    if (node.left != null) {
+      System.out.print(node.data + " ");
+      printBoundaryLeft(node.left);
+    }
+    else if (node.right != null) {
+      System.out.print(node.data + " ");
+      printBoundaryLeft(node.right);
+    }
+  }
+  private static void printBoundaryRight(Node node)
+  {
+    if (node == null)
+      return;
+    if (node.right != null) {
+      printBoundaryRight(node.right);
+      System.out.print(node.data + " ");
+    }
+    else if (node.left != null) {
+      printBoundaryRight(node.left);
+      System.out.print(node.data + " ");
+    }
 
   }
 
@@ -93,6 +146,34 @@ public class IterTraversal {
     for (Pair<Integer, Integer> it: map.values()) {
       System.out.print(it.first + " ");
     }
+    System.out.println();
+  }
+  public static void printVerticalOrder(Node root){
+    System.out.println("Vertical View :");
+    TreeMap<Integer, ArrayList<Integer>> m=new TreeMap<Integer, ArrayList<Integer>>();
+    int hd=0;
+    getVerticalOrder(m,hd,root);
+    for (Map.Entry<Integer, ArrayList<Integer>> cm:m.entrySet()){
+      System.out.println(cm.getValue());
+    }
+    System.out.println();
+  }
+
+  private static void getVerticalOrder(TreeMap<Integer, ArrayList<Integer>> m, int hd, Node root) {
+    if(root==null)
+      return;
+    if(m.get(hd)==null){
+      ArrayList<Integer> l=new ArrayList<>();
+      l.add(root.data);
+      m.put(hd,l);
+    }else {
+      ArrayList<Integer> l=m.get(hd);
+      l.add(root.data);
+      m.put(hd,l);
+    }
+    getVerticalOrder(m,hd-1,root.left);
+    getVerticalOrder(m,hd+1,root.right);
+
   }
 
   public static void MorisInorderTraversal(Node root) {
