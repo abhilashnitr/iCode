@@ -1,4 +1,4 @@
-package TreeUtils;
+package StackQueueUtils;
 import java.util.HashMap;
 
 class Entry {
