@@ -16,7 +16,7 @@ public class LCA {
     root.right.right = new Node(7);
 
     System.out.println("LCA(4, 5) = " +
-        findLCA(root,4, 5).data);
+        findLCA(root,2, 9).data);
     System.out.println("LCA(4, 6) = " +
         findLCA(root,4, 6).data);
     System.out.println("LCA(3, 4) = " +
@@ -24,12 +24,12 @@ public class LCA {
     System.out.println("LCA(2, 4) = " +
         findLCA(root,2, 4).data);
 
-    Node lca = findLCA(4, 5);
+    Node lca = findLCA(2, 5);
     if (lca != null)
-      System.out.println("LCA(4, 5) = " + lca.data);
+      System.out.println("LCA(2, 5) = " + lca.data);
     else
       System.out.println("Keys are not present");
-    Node lca1 = findLCA(4, 8);
+    Node lca1 = findLCA(2, 10);
     if (lca1 != null)
       System.out.println("LCA(4, 8) = " + lca.data);
     else

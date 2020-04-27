@@ -57,11 +57,11 @@ public class LRUCache {
     node.right = start;
     node.left = null;
     if (start != null)
-      start.left = node;
-    start = node;
+  start.left = node;
+  start = node;
     if (end == null)
-      end = start;
-  }
+  end = start;
+}
   public void removeNode(Entry node) {
 
     if (node.left != null) {

@@ -22,6 +22,9 @@ public class IterTraversal {
     root.left.right.right.right.left = new Node(11);
     root.right.right = new Node(8);
 
+    String[] ar=new String[5];
+    System.out.println(ar.length);
+    System.out.println();
     preOrderTraversal(root);
     postOrderTraversal(root);
     inOrderTraversal(root);

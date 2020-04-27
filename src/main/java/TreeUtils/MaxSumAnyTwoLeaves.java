@@ -30,9 +30,7 @@ public class MaxSumAnyTwoLeaves {
     int r = getMaxSumBetLeaf(root.right);
 
     if (root.left != null && root.right != null) {
-      if (l + r + root.data > maxSum) {
-        maxSum = l + r + root.data;
-      }
+        maxSum = Math.max(l + r + root.data,maxSum);
       return Math.max(l, r) + root.data;
     }
     return root.left != null ? l + root.data : r + root.data;
