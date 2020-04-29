@@ -50,13 +50,10 @@ public class FlattenABinarytree {
   public void flattenItrative(Node root) {
     Stack<Node> stack = new Stack<Node>();
     Node p = root;
-
     while(p != null || !stack.empty()){
-
       if(p.right != null){
         stack.push(p.right);
       }
-
       if(p.left != null){
         p.right = p.left;
         p.left = null;

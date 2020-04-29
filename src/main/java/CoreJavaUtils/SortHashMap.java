@@ -11,6 +11,10 @@ import java.util.Set;
 public class SortHashMap {
 
   public static void main(String[] args) {
+
+    String s="abc 2 3 4";
+    String[] str=s.split(" ");
+    System.out.println(str.length);
     HashMap<String,Integer> map=new HashMap<>();
     map.put("A",12);
     map.put("B",13);

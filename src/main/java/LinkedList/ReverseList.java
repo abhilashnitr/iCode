@@ -6,16 +6,29 @@ public class ReverseList {
 
   public static void main(String[] args) {
     ListNode head=new ListNode(1);
-    head.next=new ListNode(2);
-    head.next.next=new ListNode(3);
-    head.next.next.next=new ListNode(4);
-    head.next.next.next.next=new ListNode(5);
+    head.next=new ListNode(1);
+    head.next.next=new ListNode(2);
+    head.next.next.next=new ListNode(3);
+       head.next.next.next.next=new ListNode(3);
     head.next.next.next.next.next=new ListNode(6);
-    ListNode re=reverseBetween(head,2,4);
 
+  //  ListNode re=reverseBetween(head,2,4);
     //ListNode  re=reverse(head,2);
+    ListNode re=deleteDuplicates(head);
     printList(re);
   }
+
+  public static ListNode deleteDuplicates(ListNode head) {
+    ListNode res=head;
+    while(head.next!=null){
+      if(head.val==head.next.val){
+        head.next=head.next.next;
+      }else
+      head=head.next;
+    }
+    return res;
+  }
+
 
   private static void printList(ListNode re) {
     while (re!=null){

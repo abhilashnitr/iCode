@@ -24,15 +24,42 @@ public class PathSum {
     root.right.right=new Node(4);
     root.right.right.left=new Node(5);
     root.right.right.right=new Node(1);
-    System.out.println(pathSum(root,22));
-    System.out.println(hasPathSum(root,22));
+    //System.out.println(pathSum(root,22));
+    //System.out.println(hasPathSum(root,22));
+    System.out.println(printPath(root));
+  }
+
+  private static List<List<Integer>> printPath(Node root) {
+    List<List<Integer>> result = new ArrayList<>();
+    List<Integer> current = new ArrayList<>();
+    printLeafPathUtils(root, result, current);
+    return result;
   }
 
   public static List<List<Integer>> pathSum(Node root, int sum) {
     List<List<Integer>> result = new ArrayList<>();
     List<Integer> current = new ArrayList<>();
     pathSumUtil(root, sum, result, current);
+    //printLeafPathUtils(root, result, current);
     return result;
+  }
+
+  private static void printLeafPathUtils(Node root, List<List<Integer>> result, List<Integer> currentPath) {
+    if (root == null) {
+      return;
+    }
+    if (root.left == null && root.right == null) {
+
+        currentPath.add(root.data);
+        result.add(new ArrayList<>(currentPath));
+        currentPath.remove(currentPath.size() - 1);
+
+      return;
+    }
+    currentPath.add(root.data);
+    printLeafPathUtils(root.left, result, currentPath);
+    printLeafPathUtils(root.right, result, currentPath);
+    currentPath.remove(currentPath.size() - 1);
   }
 
   private static void pathSumUtil(Node root, int sum, List<List<Integer>> result, List<Integer> currentPath) {

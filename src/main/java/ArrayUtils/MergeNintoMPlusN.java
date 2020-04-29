@@ -3,13 +3,25 @@ package ArrayUtils;
 public class MergeNintoMPlusN {
 
   public static void main(String[] args) {
-    int mPlusN[] = {2, 8, -1, -1, -1, 13, -1, 15, 20};
+    int mPlusN[] = {2, 8,13,15, 20,0,0,0,0};
     int N[] = {5, 7, 9, 25};
     int n = N.length;
     int m = mPlusN.length-n;
 
-    merge(mPlusN,N,m,n);
+    //merge(mPlusN,N,m,n);
+    merge(mPlusN,m,N,n);
     printArray(mPlusN,m+n);
+  }
+
+  public static void merge(int[] nums1, int m, int[] nums2, int n) {
+    int k = m-- + n-- - 1;
+    while (m >= 0 && n >= 0) {
+      nums1[k--] = nums1[m] > nums2[n] ? nums1[m--] : nums2[n--];
+    }
+
+    while (n >= 0) {
+      nums1[n] = nums2[n--];
+    }
   }
 
   private static void merge(int[] mPlusN, int[] N, int m, int n) {
