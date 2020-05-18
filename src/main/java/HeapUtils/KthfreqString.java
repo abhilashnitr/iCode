@@ -1,10 +1,5 @@
 package HeapUtils;
 
-import HeapUtils.Util.Node;
-import HeapUtils.Util.Trie;
-import java.util.HashMap;
-import java.util.Map;
-
 public class KthfreqString {
 
   // A Trie node

@@ -83,27 +83,44 @@ public class FlattenList {
     return arr;
   }
 
-  // Sort given linked list using Merge sort algorithm
-  public static Node1 MergeSort(Node1 head)
+ static Node1 flatten(Node1 root)
   {
-    // Base case -- length 0 or 1
-    if (head == null || head.down == null) {
-      return head;
-    }
+    // Base Cases
+    if (root == null || root.next == null)
+      return root;
 
-    // Split head into 'a' and 'b' sublists
-    Node1[] arr = FrontBackSplit(head);
-    Node1 front = arr[0];
-    Node1 back = arr[1];
+    // recur for list on right
+    root.next = flatten(root.next);
 
-    // Recursively sort the sublists
-    front = MergeSort(front);
-    back = MergeSort(back);
+    // now merge
+    root = SortedMerge(root, root.next);
 
-    // answer = merge the two sorted lists together
-    return SortedMerge(front, back);
+    // return the root
+    // it will be in turn merged with its left
+    return root;
   }
 
+//  // Sort given linked list using Merge sort algorithm
+//  public static Node1 MergeSort(Node1 head)
+//  {
+//    // Base case -- length 0 or 1
+//    if (head == null || head.down == null) {
+//      return head;
+//    }
+//
+//    // Split head into 'a' and 'b' sublists
+//    Node1[] arr = FrontBackSplit(head);
+//    Node1 front = arr[0];
+//    Node1 back = arr[1];
+//
+//    // Recursively sort the sublists
+// //   front = MergeSort(front);
+//  //  back = MergeSort(back);
+//
+//    // answer = merge the two sorted lists together
+//    return SortedMerge(front, back);
+//  }
+//
   // Helper function to print given linked list
   public static void printList(Node1 head)
   {
@@ -116,22 +133,22 @@ public class FlattenList {
 
     System.out.println("null");
   }
-
-  // Iterative function to flatten and sort a given list
-  public static void flatten (Node1 head)
-  {
-    Node1 curr = head;
-
-    while (curr != null)
-    {
-      Node1 temp = curr;
-      while (temp.down != null) {
-        temp = temp.down;
-      }
-      temp.down = curr.next;
-      curr = curr.next;
-    }
-  }
+//
+//  // Iterative function to flatten and sort a given list
+//  public static void flatten (Node1 head)
+//  {
+//    Node1 curr = head;
+//
+//    while (curr != null)
+//    {
+//      Node1 temp = curr;
+//      while (temp.down != null) {
+//        temp = temp.down;
+//      }
+//      temp.down = curr.next;
+//      curr = curr.next;
+//    }
+//  }
 
   // Helper function to create a linked list with elements of given vector
   public static Node1 createVerticalList(Node1 head, int[] arr)
@@ -160,9 +177,9 @@ public class FlattenList {
     flatten(head);
     printList(head);
     //sort the list
-    MergeSort(head);
+
 
     // print the flattened & sorted linked list
-    printList(head);
+  //  printList(head);
   }
 }

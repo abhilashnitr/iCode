@@ -8,7 +8,7 @@ public class KnapSack {
         int[] weight={10,20,30};
         int W=50;
         System.out.println(knapSackRec(weight,val,W,val.length));
-        System.out.println(knapSack(weight,val,W,val.length));
+        System.out.println(knapSack(W,weight,val,val.length));
 
     }
 

@@ -8,6 +8,11 @@ public class StringPrograms {
 
   }
 
+  public static String reverse(String str){
+
+    return str;
+  }
+
   public static boolean CheckAnagrams(String s1,String s2){
    if(s1.length()!=s2.length())
      return false;

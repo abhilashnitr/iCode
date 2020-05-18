@@ -5,7 +5,7 @@ public class CheckDestSource {
     public static void main(String arg[])
     {
         int source_x = 2, source_y = 10;
-        int dest_x = 28, dest_y = 12;
+        int dest_x = 32, dest_y = 12;
         if (isReachable(source_x, source_y, dest_x,
                 dest_y))
             System.out.print("True\n");

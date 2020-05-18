@@ -6,16 +6,55 @@ public class ReverseList {
 
   public static void main(String[] args) {
     ListNode head=new ListNode(1);
-    head.next=new ListNode(1);
-    head.next.next=new ListNode(2);
-    head.next.next.next=new ListNode(3);
-       head.next.next.next.next=new ListNode(3);
+    head.next=new ListNode(2);
+    head.next.next=new ListNode(3);
+    head.next.next.next=new ListNode(4);
+       head.next.next.next.next=new ListNode(5);
     head.next.next.next.next.next=new ListNode(6);
-
-  //  ListNode re=reverseBetween(head,2,4);
-    //ListNode  re=reverse(head,2);
-    ListNode re=deleteDuplicates(head);
+    //head.next.next.next.next.next.next=head.next.next.next;
+    ListNode re=reverseBetween(head,2,4);
+    //ListNode re=reverse(head,2);
+    //ListNode re=deleteDuplicates(head);
+    //ListNode re=deleteval(head,6);
     printList(re);
+
+    System.out.println(detectLoop(head));
+  }
+
+  static boolean detectLoop(ListNode head)
+  {
+    ListNode slow_p = head, fast_p = head;
+    while (slow_p != null && fast_p != null && fast_p.next != null) {
+      slow_p = slow_p.next;
+      fast_p = fast_p.next.next;
+      if (slow_p == fast_p) {
+        System.out.println("Found loop");
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static ListNode reverse(ListNode node) {
+      ListNode newH = null;
+      while (node != null) {
+        ListNode next = node.next;
+        node.next = newH;
+        newH = node;
+        node = next;
+      }
+      return newH;
+  }
+
+  public static ListNode deleteval(ListNode head,int val) {
+    ListNode res=head;
+    while(head.next!=null){
+      if(head.next.val==val){
+        head.next=head.next.next;
+      }else
+        head=head.next;
+    }
+    return res;
   }
 
   public static ListNode deleteDuplicates(ListNode head) {

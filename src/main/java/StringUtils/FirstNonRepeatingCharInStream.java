@@ -8,6 +8,7 @@ public class FirstNonRepeatingCharInStream {
 
   static final int NO_OF_CHARS = 256;
   static char count[] = new char[NO_OF_CHARS];
+
   public static void printFirstNonRepeatingCharactersInStream(char[] stream) {
     HashMap<Character, Integer> map = new HashMap<>();
     Queue<Character> q = new LinkedList<>();

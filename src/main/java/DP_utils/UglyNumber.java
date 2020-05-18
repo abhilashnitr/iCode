@@ -35,12 +35,14 @@ public class UglyNumber {
         i5 = i5+1;
         next_multiple_of_5 = ugly[i5]*5;
       }
+      System.out.print(ugly[i]+" ");
     } /*End of for loop (i=1; i<n; i++) */
+
     return next_ugly_no;
   }
   public static void main(String args[])
   {
-    int n = 150;
+    int n = 10;
     UglyNumber obj = new UglyNumber();
     System.out.println(obj.getNthUglyNo(n));
   }

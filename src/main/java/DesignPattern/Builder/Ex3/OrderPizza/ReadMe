@@ -1,0 +1,31 @@
+Let's see the step by step real world example of Builder Design Pattern.
+
+Step 1:Create an interface Item that represents the Pizza and Cold-drink.
+
+Step 2:Create an abstract class Pizza that will implement to the interface Item.
+
+Step 3:Create an abstract class ColdDrink that will implement to the interface Item.
+
+Step 4:Create an abstract class VegPizza that will extend to the abstract class Pizza.
+
+Step 5:Create an abstract class NonVegPizza that will extend to the abstract class Pizza.
+
+Step 6:Now, create concrete sub-classes SmallCheezePizza, MediumCheezePizza,
+       LargeCheezePizza, ExtraLargeCheezePizza that will extend to the abstract class VegPizza.
+
+Step 7:Now, similarly create concrete sub-classes SmallOnionPizza, MediumOnionPizza,
+       LargeOnionPizza, ExtraLargeOnionPizza that will extend to the abstract class VegPizza.
+
+Step 8:Now, similarly create concrete sub-classes SmallMasalaPizza, MediumMasalaPizza, LargeMasalaPizza,
+       ExtraLargeMasalaPizza that will extend to the abstract class VegPizza.
+
+Step 9:Now, create concrete sub-classes SmallNonVegPizza, MediumNonVegPizza, LargeNonVegPizza,
+        ExtraLargeNonVegPizza that will extend to the abstract class NonVegPizza.
+Step 10:Now, create two abstract classes Pepsi and Coke that will extend abstract class ColdDrink.
+Step 11:Now, create concrete sub-classes SmallPepsi, MediumPepsi, LargePepsi that will extend to
+        the abstract class Pepsi.
+Step 12:Now, create concrete sub-classes SmallCoke, MediumCoke,LargeCoke that will extend to the
+        abstract class Coke.
+Step 13:Create an OrderedItems class that are having Item objects defined above.
+Step 14:Create an OrderBuilder class that will be responsible to create the objects of OrderedItems class.
+

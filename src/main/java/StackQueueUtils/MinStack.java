@@ -47,6 +47,7 @@ class MinStackUtil{
     System.out.println(x+"Inserted and min value is "+ min);
   }
   public int popUtil(){
+    
     if(st.empty()){
       return -1;
     }

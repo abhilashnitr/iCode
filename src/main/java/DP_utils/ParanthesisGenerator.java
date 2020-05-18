@@ -56,6 +56,7 @@ public class ParanthesisGenerator {
 
         if(left==0&&right==0){
             result.add(s);
+            System.out.println(s);
             return;
         }
 

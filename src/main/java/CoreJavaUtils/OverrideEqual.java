@@ -12,27 +12,16 @@ class Person
         this.age = age;
     }
 
-//    //Overriding equals
-    public boolean equals(Object obj)
-    {
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if (this.getClass() != obj.getClass()) return false;
-        Person that = (Person) obj;
-        if (this.age != that.age) return false;
-        if (!this.fname.equals(that.fname)) return false;
-        if (!this.lname.equals(that.lname)) return false;
-        return true;
-    }
 
     @Override
     public int hashCode(){
-        final int prime=31;
+       /* final int prime=31;
         int result=1;
         result=prime*result+((fname==null)?0:fname.hashCode())
                             +((lname==null)?0:lname.hashCode());
 
-        return result;
+        return result;*/
+       return 1;
     }
 }
 

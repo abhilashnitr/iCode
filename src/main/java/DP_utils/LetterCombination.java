@@ -11,7 +11,7 @@ public class LetterCombination {
         Map<Character, char[]> letterMap=getLettersMap();
         List<String> result = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        letterCombination(letterMap,result,sb,"23");
+        letterCombination(letterMap,result,sb,"234");
         System.out.println(result);
     }
 

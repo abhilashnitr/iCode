@@ -1,12 +1,14 @@
 package DP_utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CombinationSum {
     public static void main(String[] args) {
-            int[] arr={1,2,3,4,5,7,8};
-            int sum=5;
+            int[] arr={10,1,2,7,6,1,5};
+           Arrays.sort(arr);
+            int sum=8;
             comninationSumUtil(arr,sum);
     }
 
@@ -20,6 +22,7 @@ public class CombinationSum {
 
     private static void comninationSumUtil(int[] arr, int sum, ArrayList<Integer> result, List<ArrayList<Integer>> resultList, int startindex) {
         if(sum==0){
+            if(!resultList.contains(result))
             resultList.add(new ArrayList<>(result));
         }
         if(startindex==arr.length)
@@ -28,7 +31,7 @@ public class CombinationSum {
             if(arr[i]>sum)
                 continue;
             result.add(arr[i]);
-            comninationSumUtil(arr,sum-arr[i],result,resultList,i);
+            comninationSumUtil(arr,sum-arr[i],result,resultList,i+1);
             result.remove(result.size()-1);
         }
 

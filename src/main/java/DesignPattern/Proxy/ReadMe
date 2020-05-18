@@ -1,0 +1,26 @@
+Proxy means ‘in place of’, representing’ or ‘in place of’ or ‘on behalf of’
+are literal meanings of proxy and that directly explains Proxy Design Pattern.
+
+A real world example can be a cheque or credit card is a proxy for what is in
+our bank account. It can be used in place of cash, and provides a means of
+accessing that cash when required. And that’s exactly what the Proxy pattern
+does – “Controls and manage access to the object they are protecting“.
+
+
+When to use this pattern?
+
+Proxy pattern is used when we need to create a wrapper to cover the main object’s complexity from the client.
+
+Benefits:
+
+One of the advantages of Proxy pattern is security.
+This pattern avoids duplication of objects which might be huge size and memory intensive.
+This in turn increases the performance of the application.
+The remote proxy also ensures about security by installing the local code proxy (stub) in
+the client machine and then accessing the server with help of the remote code.
+
+Drawbacks/Consequences:
+
+This pattern introduces another layer of abstraction which sometimes may be an issue
+if the RealSubject code is accessed by some of the clients directly and some of them
+might access the Proxy classes. This might cause disparate behaviour.

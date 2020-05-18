@@ -38,10 +38,8 @@ public class findAllNdigit {
             int sum = 4;	// given sum
 
             String res = "";
-            char c='0';
-            c++;
-            System.out.println(c);
-           // findNdigitNums(res, n, sum);
+
+           findNdigitNums(res, n, sum);
         }
 
 }

@@ -20,7 +20,7 @@ public class LongestCommonSubsequence {
   }
 
   /* Returns length of LCS for X[0..m-1], Y[0..n-1] */
-  int lcs( char[] X, char[] Y, int m, int n )
+  public int lcs( char[] X, char[] Y, int m, int n )
   {
     if (m == 0 || n == 0)
       return 0;
@@ -29,12 +29,13 @@ public class LongestCommonSubsequence {
     else
       return max(lcs(X, Y, m, n-1), lcs(X, Y, m-1, n));
   }
+
   int max(int a, int b)
   {
     return (a > b)? a : b;
   }
 
-  int lcsDp( char[] X, char[] Y, int m, int n )
+  public int lcsDp( char[] X, char[] Y, int m, int n )
   {
     int L[][] = new int[m+1][n+1];
 

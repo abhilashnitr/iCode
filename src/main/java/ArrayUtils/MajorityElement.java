@@ -46,6 +46,9 @@ public class MajorityElement {
     MajorityElement majorelement = new MajorityElement();
     int a[] = new int[]{1, 1, 1, 5, 2};
     int size = a.length;
+    char x='B'-'A'+1;
+    int y=x;
+    System.out.println(y+y);
     majorelement.printMajority(a, size);
   }
 }

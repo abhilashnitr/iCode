@@ -1,7 +1,5 @@
 package StringUtils;
 
-import static StringUtils.StringPrograms.*;
-
 public class MainFunction {
 
   public static void main(String[] args){

@@ -1,0 +1,16 @@
+Prototype allows us to hide the complexity of making new instances from the client.
+The concept is to copy an existing object rather than creating a new instance from
+scratch, something that may include costly operations. The existing object acts as
+a prototype and contains the state of the object. The newly copied object may change
+same properties only if required.
+
+Prototype patterns is required, when object creation is time consuming, and costly
+operation, so we create object with existing object itself.
+
+Prototype Design Participants
+
+1) Prototype : This is the prototype of actual object.
+
+2) Prototype registry : This is used as registry service to have all prototypes accessible using simple string parameters.
+
+3) Client : Client will be responsible for using registry service to access prototype instances.
