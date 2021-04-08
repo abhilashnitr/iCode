@@ -14,13 +14,16 @@ public class RodCutting {
 
     if(n<=0)
       return 0;
+
     int maxValue = Integer.MIN_VALUE;
+
     for(int i=0;i<n;i++){
       maxValue=Math.max(maxValue,rodCut(price,n-i-1)+price[i]);
     }
 
     return maxValue;
   }
+
   private static int rodCutDP (int[] price, int n){
     int[] dp=new int[n+1];
     dp[0]=0;

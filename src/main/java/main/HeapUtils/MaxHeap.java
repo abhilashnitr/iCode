@@ -1,5 +1,7 @@
 package main.HeapUtils;
 
+import java.util.PriorityQueue;
+
 public class MaxHeap {
 
   void heapSort(int arr[]) {
@@ -70,13 +72,33 @@ public class MaxHeap {
       int arr[] = {12, 11, 13, 5, 6, 7};
       int n = arr.length;
 
-      MaxHeap st=new MaxHeap();
-     // st.heapSort(arr);
-      st.buildHeap(arr,n);
-      st.printArray(arr);
+//      MaxHeap st=new MaxHeap();
+//     // st.heapSort(arr);
+//      st.buildHeap(arr,n);
+//      st.printArray(arr);
+//
+//      st.kthlargest(arr,n,6);
+      System.out.println(nthUglyNumber(7));
 
-      st.kthlargest(arr,n,6);
+
     }
+
+
+  public static int nthUglyNumber(int n) {
+    if(n==1) return 1;
+    PriorityQueue<Long> q = new PriorityQueue();
+    q.add(1l);
+
+    for(long i=1; i<n; i++) {
+      long tmp = q.poll();
+      while(!q.isEmpty() && q.peek()==tmp) tmp = q.poll();
+
+      q.add(tmp*2);
+      q.add(tmp*3);
+      q.add(tmp*5);
+    }
+    return q.poll().intValue();
+  }
 
 
 }

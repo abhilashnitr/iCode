@@ -5,6 +5,7 @@ public class FIndMagicIndex {
         int[] x={-1, 0, 1, 2, 4, 10};
         int arr[] = { -10, -5, 2, 2, 2, 3, 4, 7,
             9, 12, 13 };
+
         int max=findMagicIndex(x,0,6);
         System.out.println(max);
         int max2=findMagicIndexWithDup(arr,0,10);

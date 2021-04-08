@@ -7,7 +7,7 @@ public class NoOfTImeSubsequenceOccursInString {
     String X = "subsequence";   // input String
     String Y = "sue";		// pattern
 
-    System.out.print(count(X, Y, X.length(), Y.length()));
+    System.out.println(count(X, Y, X.length(), Y.length()));
     System.out.print(countDp(X, Y, X.length(), Y.length()));
   }
 

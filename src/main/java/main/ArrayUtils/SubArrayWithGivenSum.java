@@ -15,7 +15,7 @@ public class SubArrayWithGivenSum {
             for(j=i+1;j<x.length;j++){
                 if(CurSum ==Sum){
                     int p=j-1;
-                    System.out.println("Sum found between indexes  "+i +" "+p);
+                    System.out.println("Sum found between indexes1  "+i +" "+p);
                 }
                 if(CurSum>Sum)
                     break;
@@ -37,7 +37,7 @@ public class SubArrayWithGivenSum {
                 }
                 if(CurSum ==Sum){
                     int p=i-1;
-                    System.out.println("Sum found between indexes  "+Start +" "+p);
+                    System.out.println("Sum found between indexes2  "+Start +" "+p);
                 }
                 CurSum = x[i]+CurSum;
             }
@@ -51,10 +51,10 @@ public class SubArrayWithGivenSum {
         for(int i=0;i<x.length;i++){
             cur_sum=cur_sum+x[i];
             if(cur_sum==Sum){
-                System.out.println("Sum found between indexes  "+0 +" "+i);
+                System.out.println("Sum found between indexes3  "+0 +" "+i);
             }
             if(hashMap.containsKey(cur_sum-Sum)){
-                System.out.println("Sum found between indexes  "+(hashMap.get(cur_sum-Sum)+1)+" "+i);
+                System.out.println("Sum found between indexes3  "+(hashMap.get(cur_sum-Sum)+1)+" "+i);
             }
             hashMap.put(cur_sum,i);
         }

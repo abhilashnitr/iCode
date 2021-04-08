@@ -6,7 +6,7 @@ public class KDiffPairsInAnArray {
 
   public static void main(String[] args) {
     int[] x={1,3,1,5,4};
-    int k=0;
+    int k=2;
     System.out.println(findPairs(x,k));
 
   }
@@ -39,15 +39,16 @@ public class KDiffPairsInAnArray {
     int r = 1;
     while(r < n)
     {
+      int diff=arr[r] - arr[l];
       if(l==r)
         r++;
-        else if(arr[r] - arr[l] == k)
+        else if(diff == k)
       {
         count++;
         l++;
         r++;
       }
-      else if(arr[r] - arr[l] > k)
+      else if(diff > k)
         l++;
       else // arr[r] - arr[l] < sum
         r++;

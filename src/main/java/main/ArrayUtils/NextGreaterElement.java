@@ -13,7 +13,7 @@ public class NextGreaterElement {
     int n = arr.length;
 
       printNGE(arr, n);
-      printNSE(arr,n);
+      //printNSE(arr,n);
       //printPrevSmall(arr,n);
   }
 
@@ -70,4 +70,5 @@ public class NextGreaterElement {
 
     }
   }
+
 }

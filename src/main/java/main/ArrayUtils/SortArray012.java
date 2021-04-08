@@ -12,7 +12,6 @@ public class SortArray012 {
         int l=0;
         int h=x.length-1;
         int m=0;
-        int temp=0;
         while(m<=h) {
             switch (x[m]) {
                 case 0: {
