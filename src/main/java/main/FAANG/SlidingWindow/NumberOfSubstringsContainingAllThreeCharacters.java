@@ -31,8 +31,10 @@ public class NumberOfSubstringsContainingAllThreeCharacters {
 
 /*
 Maintain a sliding window (lo, hi], where lower bound exclusively and upper bound inclusively;
-Traverse string s, use upper bound hi to count the number of the 3 characters, a, b, & c; once the sliding window includes all of the 3, we find s.length() - hi substrings (lo, hi], (lo, hi + 1], ..., (lo, s.length() - 1];
-Increase the lower bound lo by 1 (denote it as lo'), decrease the count accordingly, if the sliding window still includes all of the 3 characters, we count in substrings (lo', hi], (lo', hi + 1], ..., (lo', s.length() - 1];
+Traverse string s, use upper bound hi to count the number of the 3 characters, a, b, & c;
+once the sliding window includes all of the 3, we find s.length() - hi substrings (lo, hi], (lo, hi + 1], ..., (lo, s.length() - 1];
+Increase the lower bound lo by 1 (denote it as lo'), decrease the count accordingly,
+if the sliding window still includes all of the 3 characters, we count in substrings (lo', hi], (lo', hi + 1], ..., (lo', s.length() - 1];
 Repeat 3 till the sliding window short of at least 1 of the 3 characters, go to step 2;
 Repeat 2 - 4 till the end of the string s.
 Time: O(n), space: O(1), where n = s.length().

@@ -1,12 +1,19 @@
 package main.CoreJavaUtils;
 
 public class Test {
+    {
+        System.out.println("initializer");
+    }
+    static {
+        System.out.println("static initializer ");
+    }
 
   public static void main (String[] args) {
-    Test t=new Test();
-    t.printObj(null);
-    TestThread testThread=new TestThread();
-    testThread.start();
+    Test t1=new Test();
+    Test t2=new Test();
+//    t.printObj(null);
+//    TestThread testThread=new TestThread();
+//    testThread.start();
   }
 
   public void printObj(Object obj){

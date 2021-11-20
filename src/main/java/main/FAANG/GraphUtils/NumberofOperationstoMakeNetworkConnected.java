@@ -42,7 +42,6 @@ public class NumberofOperationstoMakeNetworkConnected {
             int y = find(connections[i][1]);
             if (x != y) parent[y] = x;
         }
-
         int ans = 0;
         for (int i = 0; i < n; i++)
             if (parent[i] == i)

@@ -1,5 +1,6 @@
 package main.FAANG.HeapUtils;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -15,17 +16,49 @@ public class MergeKLists {
     //O(n)O(n) Creating a new linked list costs O(n)O(n) space.
     //O(k)O(k) The code above present applies in-place method which cost O(1)O(1) space. And the priority queue (often implemented with heaps) costs O(k)O(k) space (it's far less than NN in most situations).
 
+
+    public static void main(String[] args) {
+        List<ListNode> lists= new ArrayList<>();
+        ListNode node1=new ListNode(1);
+        node1.next=new ListNode(2);
+        node1.next.next=new ListNode(3);
+        node1.next.next.next=new ListNode(5);
+
+        ListNode node2=new ListNode(4);
+        node2.next=new ListNode(6);
+        node2.next.next=new ListNode(8);
+
+        ListNode node3=new ListNode(7);
+        node3.next=new ListNode(8);
+        node3.next.next=new ListNode(10);
+
+        lists.add(node1);
+        lists.add(node2);
+        lists.add(node3);
+
+        MergeKLists mergeKLists=new MergeKLists();
+        ListNode ans=mergeKLists.mergeKLists(lists);
+
+        while(ans!=null){
+            System.out.print(ans.val+" ");
+            ans=ans.next;
+        }
+
+    }
     public ListNode mergeKLists(List<ListNode> lists) {
         if (lists==null||lists.size()==0) return null;
 
-        PriorityQueue<ListNode> queue= new PriorityQueue<ListNode>(lists.size(), (o1, o2) -> {
-            if (o1.val<o2.val)
-                return -1;
-            else if (o1.val==o2.val)
-                return 0;
-            else
-                return 1;
-        });
+//        PriorityQueue<ListNode> queue= new PriorityQueue<ListNode>(lists.size(), (o1, o2) -> {
+//            if (o1.val<o2.val)
+//                return -1;
+//            else if (o1.val==o2.val)
+//                return 0;
+//            else
+//                return 1;
+//        });
+
+        //minHeap
+        PriorityQueue<ListNode> queue= new PriorityQueue<ListNode>(lists.size(), (o1, o2) -> o1.val-o2.val);
 
         ListNode dummy = new ListNode(0);
         ListNode tail=dummy;

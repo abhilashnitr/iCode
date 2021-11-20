@@ -71,7 +71,7 @@ public class TwoSumBST {
         root.left.left = new TreeNode(2);
         root.left.right = new TreeNode(4);
         TwoSumBST twoSumBST=new TwoSumBST();
-        System.out.println(twoSumBST.findTarget5(root,9));
+        System.out.println(twoSumBST.findTarget3(root,9));
 
     }
 
@@ -161,5 +161,9 @@ public class TwoSumBST {
             initStack(stack, cur.left, isLeft);
         }
     }
+
+
+
+
 
 }

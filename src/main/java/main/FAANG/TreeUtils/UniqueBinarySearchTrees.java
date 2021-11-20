@@ -19,6 +19,17 @@ public class UniqueBinarySearchTrees {
         return G[n];
     }
 
+    public int numTrees2(int n) {
+        int [] dp = new int[n+1];
+        dp[0]= 1;
+        dp[1] = 1;
+        for(int level = 2; level <=n; level++)
+            for(int root = 1; root<=level; root++)
+                dp[level] += dp[level-root]*dp[root-1];
+        return dp[n];
+    }
+
+
     //Given an integer n, return all the structurally unique BST's (binary search trees), which has exactly n nodes of
     // unique values from 1 to n. Return the answer in any order.'
 

@@ -1,5 +1,6 @@
 package main.HeapUtils;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 
 public class MaxHeap {
@@ -52,6 +53,23 @@ public class MaxHeap {
       heapify(array, heapSize, i);
   }
 
+  public static void main(String[] args) {
+    int arr[] = {12, 11, 13, 5, 6, 7};
+    int n = arr.length;
+
+    MaxHeap st=new MaxHeap();
+    st.heapSort(arr);
+    System.out.println(Arrays.toString(arr));
+
+    // st.buildHeap(arr,n);
+    // st.printArray(arr);
+
+    st.kthlargest(arr,n,6);
+    // System.out.println(nthUglyNumber(7));
+
+
+  }
+
   private int extractMax(int[] array, int heapSize)
   {
     int maxElement = array[0];
@@ -59,6 +77,7 @@ public class MaxHeap {
     heapify(array,heapSize-1,0);
     return maxElement;
   }
+
   private  void kthlargest(int[] array,int n,int k){
     for(int i=0;i<k;i++){
       if(i==k-1){
@@ -68,20 +87,7 @@ public class MaxHeap {
         extractMax(array,n-i);
     }
   }
-    public static void main(String[] args) {
-      int arr[] = {12, 11, 13, 5, 6, 7};
-      int n = arr.length;
 
-//      MaxHeap st=new MaxHeap();
-//     // st.heapSort(arr);
-//      st.buildHeap(arr,n);
-//      st.printArray(arr);
-//
-//      st.kthlargest(arr,n,6);
-      System.out.println(nthUglyNumber(7));
-
-
-    }
 
 
   public static int nthUglyNumber(int n) {

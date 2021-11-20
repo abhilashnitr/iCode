@@ -2,6 +2,10 @@ package main.FAANG.SlidingWindow;
 
 public class LongestSubstringwithAtMostTwoDistinctCharacters {
 
+    public static void main(String[] args) {
+        LongestSubstringwithAtMostTwoDistinctCharacters test=new LongestSubstringwithAtMostTwoDistinctCharacters();
+        System.out.println(test.lengthOfLongestSubstringKDistinct("caaabbdefggg",2));
+    }
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         int[] count = new int[256];
         int num = 0, start = 0, res = 0;

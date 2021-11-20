@@ -17,9 +17,9 @@ public class IterTraversal {
     root.left.right.right.right.left = new Node(11);
     root.right.right = new Node(8);
 
-//    String[] ar=new String[5];
-//    System.out.println(ar.length);
-//    System.out.println();
+    String[] ar=new String[5];
+    System.out.println(ar.length);
+    System.out.println();
 //    preOrderTraversal(root);
 //    postOrderTraversal(root);
 //    inOrderTraversal(root);
@@ -93,8 +93,11 @@ public class IterTraversal {
 
     System.out.print(node.data + " ");
     printBoundaryLeft(node.left);
+    System.out.println();
     printLeaves(node.left);
+    System.out.println();
     printLeaves(node.right);
+    System.out.println();
     printBoundaryRight(node.right);
     System.out.println();
   }

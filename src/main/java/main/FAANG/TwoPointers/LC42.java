@@ -3,6 +3,11 @@ package main.FAANG.TwoPointers;
 public class LC42 {
 
 
+    public static void main(String[] args) {
+        int[] arr={3,0,5,0,4};
+        System.out.println( maxWater(arr,5));
+    }
+
     public static int maxWater(int[] arr, int n)
     {
 

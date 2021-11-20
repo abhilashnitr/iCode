@@ -4,6 +4,14 @@ public class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
+
+    @Override
+    public String toString() {
+        return "TreeNode{" +
+                "val=" + val +
+                '}';
+    }
+
     TreeNode nextPointer;
 
     public TreeNode(int data) {

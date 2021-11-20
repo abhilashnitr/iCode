@@ -7,12 +7,30 @@ public class TestClass {
     B widget1=new B();
     draw(widget);
     draw(widget1);
+
+    child child=new child();
+    abc child1=new child();
+    child.draw();
+    child1.draw();
   }
 
   public static void draw(Widget widget){
     widget.draw();
   }
 
+}
+
+abstract class abc{
+
+  static void draw(){
+    System.out.println("Abstract class");
+  }
+}
+class child extends abc{
+
+  static void draw(){
+    System.out.println("Child class");
+  }
 }
 
 

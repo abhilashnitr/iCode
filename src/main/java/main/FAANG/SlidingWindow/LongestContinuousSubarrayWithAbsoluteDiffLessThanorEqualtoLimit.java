@@ -7,7 +7,7 @@ import java.util.LinkedList;
 Given an array of integers nums and an integer limit,
 return the size of the longest non-empty subarray such
 that the absolute difference between any two elements
-of this subarray is less than or equal to limit.
+of this subarr ay is less than or equal to limit.
 */
 public class LongestContinuousSubarrayWithAbsoluteDiffLessThanorEqualtoLimit {
 

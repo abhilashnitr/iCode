@@ -49,14 +49,18 @@ public class SerializeTree {
         return sb.toString();
     }
 
-    private void buildString(Node node, StringBuilder sb) {
-        if (node == null) {
-            sb.append(NN).append(spliter);
-        } else {
-            sb.append(node.data).append(spliter);
-            buildString(node.left, sb);
-            buildString(node.right,sb);
+    private void buildString(Node root, StringBuilder sb) {
+        if(root==null)
+        {
+            sb.append('#');
+            return;
         }
+
+        sb.append(root.data);
+        sb.append(',');
+        buildString(root.left,sb);
+        sb.append(',');
+        buildString(root.right,sb);
     }
 
 //    public String serialize(Node root) {

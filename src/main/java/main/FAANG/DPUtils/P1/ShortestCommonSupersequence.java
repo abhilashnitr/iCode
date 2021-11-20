@@ -3,8 +3,8 @@ package main.FAANG.DPUtils.P1;
 public class ShortestCommonSupersequence {
 
     public static void main(String[] args) {
-        String s="ABCBDAB";
-        String t="BDCABA";
+        String s="abc";
+        String t="c";
         ShortestCommonSupersequence ssc =new ShortestCommonSupersequence();
         System.out.println(ssc.shortestCommonSupersequence(s,t));
     }
@@ -56,38 +56,6 @@ public class ShortestCommonSupersequence {
             arr[--l] = text2.charAt(j-1);
             j--;
         }
-
-
-//        int i=n1;
-//        int j=n2;
-//        char[] scs=new char[dp[n1][n2]];
-//        int index=dp[n1][n2]-1;
-//        while (i>0&j>0){
-//            if(text1.charAt(i-1)==text2.charAt(j-1)){
-//                scs[index]=text1.charAt(i-1);
-//                index--;
-//                i--;
-//                j--;
-//            }else if(dp[i-1][j]>dp[i][j-1]){
-//                scs[index]=text1.charAt(i-1);
-//                index--;
-//                i--;
-//            }else
-//                scs[index]=text2.charAt(j-1);
-//                index--;
-//                j--;
-//
-//        }
-//        while (i>0){
-//            scs[index]=text1.charAt(i-1);
-//            index--;
-//            i--;
-//        }
-//        while (j>0){
-//            scs[index]=text2.charAt(j-1);
-//            index--;
-//            j--;
-//        }
 
         System.out.println(new String(arr));
         return dp[n1][n2];

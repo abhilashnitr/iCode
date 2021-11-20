@@ -8,8 +8,10 @@ public class NumberofDiceRollsWithTargetSum {
 
     public static void main(String[] args) {
         NumberofDiceRollsWithTargetSum numberofDiceRollsWithTargetSum=new NumberofDiceRollsWithTargetSum();
-        int x=numberofDiceRollsWithTargetSum.numRollsToTargetWithMemo(2,6,7,new int[2+1][7+1]);
-        System.out.println(x);
+        int x=numberofDiceRollsWithTargetSum.numRollsToTargetWithMemo(3,5,10,new int[3+1][10+1]);
+      //  int y=numberofDiceRollsWithTargetSum.numRollsToTarget(30,30,500);
+
+        System.out.println( x);
     }
     public int numRollsToTarget(int d, int f, int target) {
         if(d==0&&target==0)
@@ -40,7 +42,7 @@ public class NumberofDiceRollsWithTargetSum {
         int res=0;
         for(int i=1;i<=f;i++)
             if(target>=i)
-                res+=numRollsToTarget(d-1,f,target-i);
+                res+=numRollsToTargetWithMemo(d-1,f,target-i,memo);
 
         memo[d][target]=res;
         return res;

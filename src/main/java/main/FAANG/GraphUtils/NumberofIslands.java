@@ -82,6 +82,9 @@ public class NumberofIslands {
         }
     }
 
+
+
+
     int[][] distance = {{1,0},{-1,0},{0,1},{0,-1}};
     public int numIslands3(char[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0)  {
@@ -136,6 +139,16 @@ class UnionFind {
             count--;
         }
     }
+
+    /*
+      private int find(int x) {
+        while (x != parent[x]) {
+            x = parent[x];
+            parent[x] = parent[parent[x]];
+        }
+        return x;
+    }
+    */
     public int find (int node) {
         if (father[node] == node) {
             return node;

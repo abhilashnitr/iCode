@@ -2,6 +2,7 @@ package main.FAANG.HeapUtils;
 
 import java.util.PriorityQueue;
 
+// using a minn heap
 public class KthLargestElementinanArray {
 
     public int findKthLargest(int[] nums, int k) {

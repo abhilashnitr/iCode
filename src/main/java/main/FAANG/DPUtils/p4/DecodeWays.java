@@ -7,7 +7,7 @@ public class DecodeWays {
     public static void main(String[] args) {
 
         DecodeWays d=new DecodeWays();
-        String s="12";
+        String s="127";
         System.out.println(d.numDecodings(s));
     }
     public int numDecodings(String s) {

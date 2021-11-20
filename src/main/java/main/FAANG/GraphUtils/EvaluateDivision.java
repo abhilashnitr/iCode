@@ -1,9 +1,6 @@
 package main.FAANG.GraphUtils;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class EvaluateDivision {
     /*
@@ -18,6 +15,15 @@ Note: The input is always valid. You may assume that evaluating the queries will
 Rejection case should be checked before accepting case.
 Accepting case is (graph.get(u).containsKey(v)) rather than (u.equals(v)) for it takes O(1) but (u.equals(v)) takes O(n) for n is the length of the longer one between u and v.
     */
+
+    public static void main(String[] args) {
+        String[][] equations={{"a","b"},{"b","c"}};
+        double[] values={2.0,3.0};
+        String[][] queries={{"a","c"},{"b","a"}};
+
+        EvaluateDivision evaluateDivision = new EvaluateDivision();
+        System.out.println(evaluateDivision.calcEquation(equations,values,queries));
+    }
     public double[] calcEquation(String[][] equations, double[] values, String[][] queries) {
 
         /* Build graph. */

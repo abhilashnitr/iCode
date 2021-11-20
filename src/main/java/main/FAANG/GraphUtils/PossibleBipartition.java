@@ -15,6 +15,10 @@ Return true if and only if it is possible to split everyone into two groups in t
 public class PossibleBipartition {
     public static void main(String[] args) {
 
+        int n=4;
+        int[][] dislikes={{1,2},{1,3},{2,4}};
+        PossibleBipartition possibleBipartition=new PossibleBipartition();
+        System.out.println(possibleBipartition.possibleBipartition(n,dislikes));
     }
 
     List<Integer> [] disList;

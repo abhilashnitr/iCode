@@ -1,7 +1,6 @@
 package main.CoreJavaUtils;
 
-class Course1
-        //implements Cloneable
+class Course1 implements Cloneable
 {
     String subject1;
 
@@ -18,10 +17,19 @@ class Course1
         this.subject3 = sub3;
     }
 
-//    protected Object clone() throws CloneNotSupportedException
-//    {
-//        return super.clone();
-//    }
+    @Override
+    public String toString() {
+        return "Course1{" +
+                "subject1='" + subject1 + '\'' +
+                ", subject2='" + subject2 + '\'' +
+                ", subject3='" + subject3 + '\'' +
+                '}';
+    }
+
+    protected Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
+    }
 }
 
 class Student1 implements Cloneable
@@ -41,6 +49,14 @@ class Student1 implements Cloneable
         this.course1 = course1;
     }
 
+    @Override
+    public String toString() {
+        return "Student1{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", course1=" + course1 +
+                '}';
+    }
     //Overriding clone() method to create a deep copy of an object.
 
     protected Object clone(String sub1, String sub2, String sub3)
@@ -76,14 +92,15 @@ public class DeepCopyInJava {
 
         //Printing the subject3 of 'student1'
 
-        System.out.println(student1.course1.subject3);         //Output : Biology
-
+        System.out.println(student1);         //Output : Biology
+        System.out.println(student2);
         //Changing the subject3 of 'student2'
 
         student2.course1.subject3 = "Maths";
 
         //This change will not be reflected in original student 'student1'
 
-        System.out.println(student1.course1.subject3);       //Output : Biology
+        System.out.println(student1);       //Output : Biology
+        System.out.println(student2);
     }
 }

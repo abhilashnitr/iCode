@@ -27,6 +27,8 @@ class Employee {
         }
         return total;
     }
+
+
     //bfs
     public int getImportancebfs(List<Employee> employees, int id) {
         int total = 0;

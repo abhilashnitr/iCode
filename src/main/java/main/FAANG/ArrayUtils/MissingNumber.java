@@ -14,6 +14,33 @@ public class MissingNumber {
         return res;
     }
 
+    public static void main(String[] args) {
+        int[] arr={9,6,4,2,3,5,7,0,1};
+        MissingNumber missingNumber=new MissingNumber();
+        System.out.println(missingNumber.missingNumber3(arr));
+    }
+
+    public int missingNumber3(int[] nums) {
+
+        int mask=nums.length+1;
+        for(int i=0;i<nums.length;i++){
+            int idx=nums[i];
+            if(idx==nums.length)
+                continue;
+            else
+            {
+                if(nums[i]>=mask)
+                    idx=nums[i]-mask;
+                nums[idx]=mask+nums[idx];
+            }
+        }
+        int res=nums.length;
+        for(int i=0;i<nums.length;i++)
+            if(nums[i]<mask)
+                res=i;
+        return res;
+    }
+
     public int missingNumber2(int[] nums) { //sum
         int len = nums.length;
         int sum = (0+len)*(len+1)/2;

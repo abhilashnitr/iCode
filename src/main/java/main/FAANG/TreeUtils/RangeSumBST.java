@@ -23,4 +23,22 @@ public class RangeSumBST {
         if(root.val < L) return rangeSumBST(root.right, L, R);
         return root.val + rangeSumBST(root.left, L, R) + rangeSumBST(root.right, L, R);
     }
+
+    int ans = 0;
+
+    public int rangeSumBST3(TreeNode root, int low, int high) {
+        util(root, low, high);
+        return ans;
+    }
+
+    void util(TreeNode root, int low, int high){
+        if(root == null){
+            return;
+        }
+        if(low <= root.val &&  root.val <= high){
+            ans += root.val;
+        }
+        util(root.left, low, high);
+        util(root.right, low, high);
+    }
 }

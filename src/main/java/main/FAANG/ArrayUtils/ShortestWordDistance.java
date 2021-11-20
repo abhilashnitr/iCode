@@ -1,7 +1,14 @@
 package main.FAANG.ArrayUtils;
 
 public class ShortestWordDistance {
-    public int shortestDistance(String[] words, String word1, String word2) {
+
+    public static void main(String[] args) {
+        String[] strings={"practice", "makes", "perfect", "coding", "makes"};
+
+        System.out.println(shortestDistance(strings,"coding","practice"));
+        System.out.println(shortestDistance(strings,"makes","coding"));
+    }
+    public static int shortestDistance(String[] words, String word1, String word2) {
         int p1 = -1, p2 = -1, min = Integer.MAX_VALUE;
 
         for (int i = 0; i < words.length; i++) {

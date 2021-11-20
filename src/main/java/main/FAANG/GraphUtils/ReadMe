@@ -1,62 +1,54 @@
-547 Done
-323 Done
-261 Done
-207 Done
-210 Done
-200 Done
-130 Done
-734 Done
-737 Done
-1101 Done
-684 Done
-721 Done
-947 Done
-1319 Done
-990 Done
-1135 Done
-399 Done
-1020 Done
-1376 Done
-1254 Done
+1162,721,207,210,690     399,802,277,997,733
+261,785,463,841,784      542,695,947,1254,323
+1020,200,1319,547,886    684,994,990,734,737
+1293,1730,130,1101,1376  286
 
-695 Done
-463 Done
-286 Done
-841 Done
-733 Done
-by 4pm
+todo- 1034,1135,743,1091,444,1203,
+126 127 133 301 310 417 490 505 515 529 675 752 773
+787 815 854 909  1129 1197 1236 1311
 
 
-690 Done
-997 Done
-277 Done
- by 6Pm
+
+Classification :
+Union Find 721 261 323 547 1319 684 990 737
+BFS - 1162 542 994
+DFS - 399 802 463 841 784 1254 947 1020 737
+dfs/bfs-690 733 785 695 200 547 684
+Different - 277 997 734
+topological Sort  actually based onn BFS-  207 210
+785 ,886,802 simillar
+Easy : 1162 690 733 542 841 784 323 1254 200 1020 1319 684 990
+Medium:721 207 210 463 695 547  994 734
+Hard: 399 802 785 947 886 737
 
 
-542 Done
-1730 Done
-1293 Done
-1162 Done
+
+
+
+547 323 261 207 210 200 130 734 737 1101
+684 721 947 1319 990 1135(skip) 399 1020 1376
+1254 695 463 286 841 733 690 997 277 542
+
+1730 1293 1162 994 1091 886 785 784
+
+to do next : 695 994
 802
-994 Done
-1091 Done
-tomorrow morning
-
-
-886 Done
-785 Done
-
-
-
-
 1134
-784 Done
-after 8 pm
+
 
 Skipped:630 ,317 ,1034 ,685 ,305  ,743
 
 
-thursday : sliding Window
-Fridy : Topological Sort
+public int findRoot(int[] roots,int id){
+        while(roots[id]!=id){
+            roots[id] = roots[roots[id]];
+            id = roots[id];
+        }
+        return id;
+    }
+int find(int nums[], int i) {
+        if (nums[i] == -1) return i;
+        return find(nums, nums[i]);
+    }
 
-Feb 20 to 30 - Arrays
+

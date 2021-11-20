@@ -5,7 +5,13 @@ import java.util.HashSet;
 
 public class FindK_LengthSubstringsWithNoRepeatedCharacters {
 
-    public int numKLenSubstrNoRepeats(String S, int K) {
+
+    public static void main(String[] args) {
+        String s="abcdefge";
+        int k=5;
+        System.out.println(numKLenSubstrNoRepeats2(s,k));
+    }
+    public static int numKLenSubstrNoRepeats(String S, int K) {
         HashSet<Character> cur = new HashSet<>();
         int res = 0, start = 0;
         for (int end = 0; end < S.length(); ++end) {
@@ -18,7 +24,7 @@ public class FindK_LengthSubstringsWithNoRepeatedCharacters {
         return res;
     }
 
-    public int numKLenSubstrNoRepeats2(String S, int K) {
+    public static int numKLenSubstrNoRepeats2(String S, int K) {
         if (K <= 0 || S == null || S.length() < K) return 0;
         int[] m = new int[26];
         Arrays.fill(m, -1);

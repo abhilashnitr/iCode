@@ -27,6 +27,11 @@ If it has been colored, check if the current color is the same as the color that
 
     */
 
+    public static void main(String[] args) {
+        int[][] graph={{1,2,3},{0,2},{0,1,3},{0,2}};
+        IsGraphBipartite isGraphBipartite=new IsGraphBipartite();
+        System.out.println(isGraphBipartite.isBipartite(graph));
+    }
     public boolean isBipartite(int[][] graph) {
         int n = graph.length;
         int[] colors = new int[n];

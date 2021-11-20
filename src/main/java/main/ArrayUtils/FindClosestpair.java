@@ -14,11 +14,11 @@ public class FindClosestpair {
                 res1=x[l];
                 res2=x[h];
             }
-            if(x[l]+x[h]<sum){
-                l++;
+            if(x[l]+x[h]>sum){
+                h--;
             }
             else{
-                h--;
+                l++;
             }
         }
         System.out.println("The Pairs are "+res1+"  "+res2);

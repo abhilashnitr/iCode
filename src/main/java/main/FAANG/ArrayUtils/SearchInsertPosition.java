@@ -9,7 +9,7 @@ public class SearchInsertPosition {
     public static void main(String[] args) {
         SearchInsertPosition searchInsertPosition=new SearchInsertPosition();
         int[] arr={1,3,5,6};
-        System.out.println(searchInsertPosition.searchInsert(arr,4));
+        System.out.println(searchInsertPosition.searchInsert(arr,7));
     }
 
     public int searchInsert(int[] nums, int target) {

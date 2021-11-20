@@ -15,26 +15,21 @@ public class collectionImmutableDemo {
         List<Integer> list2 = new ArrayList<>(list1);
         list2.add(70);
         List<Integer> UnmodifiableList= Collections.unmodifiableList(new ArrayList<>(list1));
-       // List immutableList= List.of(new ArrayList<>(list1));
         try {
             list1.add(6);
          //   immutableList.add(5);
-            UnmodifiableList.add(5);
+         //   UnmodifiableList.add(5);
 
 
         }catch (UnsupportedOperationException e){
             e.printStackTrace();
         }finally {
             //System.out.println(list1.add(5));
-            list1.forEach(val-> System.out.print(val+" "));
-            System.out.println();
-            UnmodifiableList.forEach(val-> System.out.print(val+" "));
-            System.out.println();
-           // immutableList.forEach(val-> System.out.print(val+" "));
-            System.out.println();
+            System.out.println(list1);
+            System.out.println(list2);
+            System.out.println(UnmodifiableList);
         }
-        System.out.println(list2.size());
-        list2.forEach(val-> System.out.print(val+" "));
+
 
     }
 }

@@ -27,7 +27,14 @@ d->g
 */
 
     public static void main(String[] args) {
-        List<List<String>> lists=Arrays.asList(Arrays.asList("John", "johnsmith@mail.com", "john00@mail.com"),Arrays.asList("John", "johnnybravo@mail.com"),Arrays.asList("John", "johnsmith@mail.com", "john_newyork@mail.com"),Arrays.asList("Mary", "mary@mail.com"));
+//        List<List<String>> lists=Arrays.asList(Arrays.asList("John", "johnsmith@mail.com", "john00@mail.com")
+//                ,Arrays.asList("John", "johnnybravo@mail.com")
+//                ,Arrays.asList("John", "johnsmith@mail.com", "john_newyork@mail.com")
+//                ,Arrays.asList("Mary", "mary@mail.com"));
+        List<List<String>> lists=Arrays.asList(Arrays.asList("a", "b", "c")
+                ,Arrays.asList("a", "d")
+                ,Arrays.asList("a", "b", "e")
+                ,Arrays.asList("f", "g"));
         AccountsMerge accountsMerge=new AccountsMerge();
         System.out.println(accountsMerge.accountsMerge(lists));
     }
@@ -44,7 +51,10 @@ d->g
         for (List<String> a : acts) {
             String p = find(a.get(1), parents);
             for (int i = 2; i < a.size(); i++)
-                parents.put(find(a.get(i), parents), p);
+            {
+                String p1=find(a.get(i), parents);
+                parents.put(p1,p);
+            }
         }
         for(List<String> a : acts) {
             String p = find(a.get(1), parents);
@@ -61,6 +71,7 @@ d->g
         return res;
     }
     private String find(String s, Map<String, String> p) {
+
         return p.get(s) == s ? s : find(p.get(s), p);
     }
 }

@@ -7,6 +7,19 @@ import java.util.Queue;
 
 public class CourseSchedule {
 
+
+    public static void main(String[] args) {
+
+        int numCourses=4;
+        int[][] prerequisites={{1,0},{2,0},{3,1},{3,2}};
+        CourseSchedule courseSchedule=new CourseSchedule();
+        int[] ans= courseSchedule.canFinishII(numCourses,prerequisites);
+        for(int a:ans){
+            System.out.print(a+" ");
+        }
+
+    }
+
     //Time Complexcity O(2E+V) E for building the graph and E+V for traversal
     //space O(E+2V) E+V for graph and V for container(indegree)
     public boolean canFinish(int numCourses, int[][] prerequisites) {
@@ -95,17 +108,7 @@ public class CourseSchedule {
     }
 
 
-    public static void main(String[] args) {
 
-        int numCourses=4;
-        int[][] prerequisites={{1,0},{2,0},{3,1},{3,2}};
-        CourseSchedule courseSchedule=new CourseSchedule();
-        int[] ans= courseSchedule.canFinishII(numCourses,prerequisites);
-        for(int a:ans){
-            System.out.print(a+" ");
-        }
-
-    }
 
     public int[] canFinishII(int numCourses, int[][] prerequisites) {
         int index = 0;

@@ -4,7 +4,7 @@ public class DistinctSubsequences {
     public static void main(String[] args) {
         DistinctSubsequences distinctSubsequences=new DistinctSubsequences();
         String s="subsequence";
-        String t="sue";
+        String t="";
         System.out.println(distinctSubsequences.numDistinct2(s,t));
     }
 

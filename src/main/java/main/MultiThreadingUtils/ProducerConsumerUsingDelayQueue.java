@@ -16,7 +16,7 @@ public class ProducerConsumerUsingDelayQueue {
     AtomicInteger counter = new AtomicInteger();
     ScheduledExecutorService ses = Executors.newScheduledThreadPool(2);
     ses.scheduleAtFixedRate(new DelayedEventProducer(queue, counter), 1, 2, TimeUnit.SECONDS);
-    ses.scheduleAtFixedRate(new DelayedEventConsumer(queue), 1, 10, TimeUnit.SECONDS);
+    ses.scheduleAtFixedRate(new DelayedEventConsumer(queue), 1, 2, TimeUnit.SECONDS);
   }
 }
 

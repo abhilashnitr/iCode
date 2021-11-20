@@ -12,13 +12,13 @@ public class ReverseList {
        head.next.next.next.next=new ListNode(5);
     head.next.next.next.next.next=new ListNode(6);
     //head.next.next.next.next.next.next=head.next.next.next;
-    ListNode re=reverseBetween(head,2,4);
-    //ListNode re=reverse(head,2);
+    ListNode re=reverseBetween2(head,2,4);
+    //ListNode re=reverse(head,4);
     //ListNode re=deleteDuplicates(head);
     //ListNode re=deleteval(head,6);
     printList(re);
 
-    System.out.println(detectLoop(head));
+    //System.out.println(detectLoop(head));
   }
 
   static boolean detectLoop(ListNode head)
@@ -146,7 +146,69 @@ public class ReverseList {
     // prev is now head of input list
     return prev;
   }
+
+
+  public static ListNode reverseBetween2(ListNode head, int m, int n) {
+    if(head == null) return null;
+    ListNode dummy = new ListNode(0); // create a dummy node to mark the head of this list
+    dummy.next = head;
+    ListNode pre = dummy; // make a pointer pre as a marker for the node before reversing
+    for(int i = 0; i<m-1; i++) pre = pre.next;
+
+    ListNode start = pre.next; // a pointer to the beginning of a sub-list that will be reversed
+    ListNode then = start.next; // a pointer to a node that will be reversed
+
+    // 1 - 2 -3 - 4 - 5 ; m=2; n =4 ---> pre = 1, start = 2, then = 3
+    // dummy-> 1 -> 2 -> 3 -> 4 -> 5
+
+    for(int i=0; i<n-m; i++)
+    {
+      start.next = then.next;
+      then.next = pre.next;
+      pre.next = then;
+      then = start.next;
+    }
+
+    // first reversing : dummy->1 - 3 - 2 - 4 - 5; pre = 1, start = 2, then = 4
+    // second reversing: dummy->1 - 4 - 3 - 2 - 5; pre = 1, start = 2, then = 5 (finish)
+    return dummy.next;
+  }
+
+  public ListNode reverseKGroup(ListNode head, int k) {
+    ListNode dummy = new ListNode(0);
+    dummy.next = head;
+    ListNode pointer = dummy;
+    while (pointer != null) {
+      ListNode node = pointer;
+      // first check whether there are k nodes to reverse
+      for (int i = 0; i < k && node != null; i++) {
+        node = node.next;
+      }
+      if (node == null) break;
+
+      // now we know that we have k nodes, we will start from the first node
+      ListNode prev = null, curr = pointer.next, next = null;
+      for (int i = 0; i < k; i++) {
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+      }
+      ListNode tail = pointer.next;
+      tail.next = curr;
+      pointer.next = prev;
+      pointer = tail;
+    }
+    return dummy.next;
+  }
+
 }
+
+
+
+
+
+
 
 class ListNode {
   int val;

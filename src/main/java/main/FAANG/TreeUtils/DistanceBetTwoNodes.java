@@ -76,7 +76,7 @@ public class DistanceBetTwoNodes {
 //    System.out.println("Dist(4, 6) = "+findDistance(root, 4, 6));
 //    System.out.println("Dist(3, 4) = "+findDistance(root, 3, 4));
 //    System.out.println("Dist(2, 4) = "+findDistance(root, 2, 4));
-    System.out.println("Dist(8, 5) = " +findDistance(root, 5, 7));
+    System.out.println("Dist(3, 8) = " +findDistance(root, 3, 8));
 
   }
 

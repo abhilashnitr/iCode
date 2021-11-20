@@ -18,7 +18,7 @@ public class FlattenABinarytree {
     flattenItrative(root);
 
   }
-  /*public static void printDLL(Node head)
+  public static void printDLL(Node head)
   {
     Node curr = head;
     while (curr != null)
@@ -69,7 +69,9 @@ public class FlattenABinarytree {
     root.right = null;
     Node newLast = helper2(l, root);
     return helper2(r, newLast);
-  }*/
+  }
+
+
   public static void flattenItrative(Node root) {
     Stack<Node> stack = new Stack<Node>();
     Node p = root;
@@ -117,4 +119,24 @@ public class FlattenABinarytree {
     while (cur.right != null) cur = cur.right;
     cur.right = right;
   }
+
+  /*
+  node* preorder(node* root){ 1
+	if(root==NULL) return NULL;
+	node* temp, temp2;
+    Temp = root->right; 5
+Temp2 = root;
+	if(root->left!=NULL) {
+		root->right = preorder(root->left);
+	}
+	root->left = null;
+  2
+	while(root->right!=NULL){
+		Root = root->right;
+	}
+	root->right = preorder(temp);
+Return temp2;
+}
+
+*/
 }

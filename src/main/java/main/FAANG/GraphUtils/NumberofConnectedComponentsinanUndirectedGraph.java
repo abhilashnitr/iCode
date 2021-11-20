@@ -2,6 +2,14 @@ package main.FAANG.GraphUtils;
 
 public class NumberofConnectedComponentsinanUndirectedGraph {
 
+    public static void main(String[] args) {
+        int nodes=5;
+        int[][] edges={{0,1},{0,3}};
+
+        NumberofConnectedComponentsinanUndirectedGraph n=new NumberofConnectedComponentsinanUndirectedGraph();
+        System.out.println(n.countComponents(nodes,edges));
+    }
+
     public int countComponents(int n,int[][] M) {
         int count = n;
         int[] root = new int[n];

@@ -19,8 +19,8 @@ public class LC287 {
 
     public static void main(String[] args) {
         LC287 lc287=new LC287();
-        int[] arr={1,3,4,2,2};
-        System.out.println(lc287.findDuplicate3(arr));
+        int[] arr={3,1,3,4,2};
+        System.out.println(lc287.findDuplicate2(arr));
     }
     int findDuplicate3(int[] nums)
     {
@@ -41,6 +41,38 @@ public class LC287 {
                 slow = nums[slow];
             }
             return slow;
+        }
+        return -1;
+    }
+
+    public int findDuplicate(int[] nums) {
+
+
+        //-1  3  4 -2  2
+        // 0  1  2  3  4
+        for(int i=0;i<nums.length;i++){
+            int v=Math.abs(nums[i]);
+            nums[v-1]= -nums[v];
+        }
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>0)
+                return i+1;
+        }
+        return -1;
+    }
+
+    public int findDuplicate2(int[] nums) {
+
+
+        //-1  3  4 -2  2
+        // 0  1  2  3  4
+        for(int i=0;i<nums.length;i++){
+            int v=Math.abs(nums[i]);
+            nums[v-1]= -nums[v-1];
+        }
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>0)
+                return i+1;
         }
         return -1;
     }

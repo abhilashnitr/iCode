@@ -59,6 +59,11 @@ public class MaximumPointsYouCanObtainfromCards {
         return res;
     }
 
+    public static void main(String[] args) {
+        int[] arr={1,2,4,3,2,1,7,10,11};
+        MaximumPointsYouCanObtainfromCards cards=new MaximumPointsYouCanObtainfromCards();
+        System.out.println(cards.maxScore3(arr,4));
+    }
 
     //improved version of above
     public int maxScore3(int[] cardPoints, int k) {

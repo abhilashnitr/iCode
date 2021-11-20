@@ -23,4 +23,13 @@ public class MinimumDistanceBetweenBSTNodes {
     return prev;
   }
 
+  Integer res = Integer.MAX_VALUE, pre = null;
+  public int minDiffInBST2(TreeNode root) {
+    if (root.left != null) minDiffInBST2(root.left);
+    if (pre != null) res = Math.min(res, root.val - pre);
+    pre = root.val;
+    if (root.right != null) minDiffInBST2(root.right);
+    return res;
+  }
+
 }

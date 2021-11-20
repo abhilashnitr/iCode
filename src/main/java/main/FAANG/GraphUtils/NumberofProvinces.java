@@ -13,9 +13,14 @@ You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith
 Return the total number of provinces.
 
 How is this question different from Number of Islands?
-In the Number of Islands question, you have a 2d grid. The number of "Nodes" if you will, are the cells of the grid. So you have rows x columns in terms of the total number of nodes. Furthermore, the edges are represented by checking whether the adjacent members are the 1 or not. This is why when you perform DFS, you need to have checks in all 4 directions to add the neighbors.
+In the Number of Islands question, you have a 2d grid. The number of "Nodes" if you will, are the cells of the grid.
+So you have rows x columns in terms of the total number of nodes. Furthermore, the edges are represented by checking
+whether the adjacent members are the 1 or not. This is why when you perform DFS, you need to have checks in
+all 4 directions to add the neighbors.
 
-In this question, you have a NxN matrix but only N friends in total. Edges are directly given via the cells so you have to traverse a row (versus a 4 direction check) to get the neighbors for a specific matrix. In the Number of Islands question, you can track visited by editing the original matrix. In this question, a separate array of length N can be used.
+In this question, you have a NxN matrix but only N friends in total. Edges are directly given via the cells so you have
+to traverse a row (versus a 4 direction check) to get the neighbors for a specific matrix. In the Number of Islands
+question, you can track visited by editing the original matrix. In this question, a separate array of length N can be used.
 
 I hope that helped.
 * */
@@ -56,7 +61,7 @@ Space complexity : O(n)O(n). visited array of size nn is used.
     BFS
     Complexity Analysis
     Time complexity : O(n^2) The complete matrix of size n^2 is traversed.
-    Space complexity : O(n)O(n). A queuequeue and visitedvisited array of size nn is used.
+    Space complexity : O(n)O(n). A queue and visited array of size nn is used.
     */
     public int findCircleNum2(int[][] M) {
         int[] visited = new int[M.length];

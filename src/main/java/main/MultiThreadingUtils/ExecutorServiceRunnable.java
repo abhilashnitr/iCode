@@ -1,11 +1,8 @@
 package main.MultiThreadingUtils;
 
+import java.nio.channels.InterruptedByTimeoutException;
 import java.time.LocalDateTime;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class ExecutorServiceRunnable {
   public static void main(String[] args)
@@ -20,6 +17,11 @@ public class ExecutorServiceRunnable {
       }
     };
 
+    Callable<Integer> callableTask = () -> {
+      System.out.println("Hello");
+      return 2;
+    };
+
     //Executor service instance
     ExecutorService executor = Executors.newFixedThreadPool(10);
 
@@ -28,12 +30,21 @@ public class ExecutorServiceRunnable {
 
     //2. execute task using submit() method
     Future<String> result = executor.submit(runnableTask, "DONE");
-
-    while(result.isDone() == false)
+    Future<Integer> result2 = executor.submit(callableTask);
+    if (result2.isDone()){
+      try {
+        System.out.println("Hello"+result2.get());
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      } catch (ExecutionException e) {
+        e.printStackTrace();
+      }
+    }
+    while(result2.isDone() == false)
     {
       try
       {
-        System.out.println("The method return value : " + result.get());
+        System.out.println("The method return value : " + result2.get());
         break;
       }
       catch (InterruptedException | ExecutionException e)

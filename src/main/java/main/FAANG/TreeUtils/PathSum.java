@@ -14,7 +14,10 @@ import java.util.List;
 public class PathSum {
 
   public static void main(String[] args) {
-
+//    String s="abc";
+//    String s1=s;
+//    s=s+"abcc";
+//    System.out.println(s+" "+s1);
 
     System.out.println(System.currentTimeMillis());
     Node root= new Node(5);
@@ -30,8 +33,9 @@ public class PathSum {
     System.out.println(pathSum(root,22));
     System.out.println(hasPathSum(root,22));
     System.out.println(printPathToLeafs(root));
-  }
 
+    PathSum pathSum=new PathSum();
+  }
 
 
   public static List<List<Integer>> pathSum(Node root, int sum) {
@@ -40,6 +44,7 @@ public class PathSum {
     pathSumUtil(root, sum, result, current);
     return result;
   }
+
   private static void pathSumUtil(Node root, int sum, List<List<Integer>> result, List<Integer> currentPath) {
     if (root == null) {
       return;

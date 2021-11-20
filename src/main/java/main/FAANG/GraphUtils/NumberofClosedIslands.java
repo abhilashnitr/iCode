@@ -47,7 +47,8 @@ Then, we can count and flood-fill the remaining islands.
             return;
 
         //If other 0's are connected to border then dont increase ans
-        if((i==0 || j==0 || i==grid.length-1 || j==grid[0].length-1) && grid[i][j]==0)
+        if((i==0 || j==0 || i==grid.length-1 || j==grid[0].length-1)
+                && grid[i][j]==0)
             flag = false;
 
         grid[i][j]=1;

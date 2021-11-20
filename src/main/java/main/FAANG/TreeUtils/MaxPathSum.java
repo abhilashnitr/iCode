@@ -27,14 +27,38 @@ public class MaxPathSum {
   public static void main(String[] args) {
      Node root;
     root = new Node(1);
-    root.left = new Node(2);
-    root.right = new Node(3);
-    root.left.left = new Node(-4);
-    root.left.right = new Node(-5);
-    root.right.left = new Node(-6);
-    root.right.right = new Node(-7);
+//    root.left = new Node(2);
+//    root.right = new Node(3);
+//    root.left.left = new Node(-4);
+//    root.left.right = new Node(-5);
+//    root.right.left = new Node(-6);
+//    root.right.right = new Node(-7);
     MaxPathSum mx=new MaxPathSum();
-    System.out.println(mx.maxSumPath(root));
+    System.out.println(mx.maxPathSum(root));
+    System.out.println(mx.maxSum);
+  }
+
+
+  public int maxPathSum(Node root) {
+
+    maxPathSumUtils(root);
+
+    return maxSum;
+
+  }
+
+  public int maxPathSumUtils(Node root) {
+    if(root==null)
+      return 0;
+
+    int leftSum=maxPathSumUtils( root.left);
+    int rightSum=maxPathSumUtils( root.right);
+
+
+    maxSum=Math.max(leftSum+rightSum+root.data,maxSum);
+
+    return Math.max(leftSum,rightSum)+root.data;
+
   }
 
 

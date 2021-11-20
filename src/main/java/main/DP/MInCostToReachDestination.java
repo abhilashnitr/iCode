@@ -1,4 +1,4 @@
-package main.Practise.DP;
+package main.DP;
 
 public class MInCostToReachDestination {
   private static int N;

@@ -1,8 +1,34 @@
 package main.FAANG.SlidingWindow;
 
+//Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous
+// subarray [numsl, numsl+1, ..., numsr-1, numsr] of which the sum is greater than or equal to target. If there is no
+// such subarray, return 0 instead.
 public class MinimumSizeSubarraySum {
     public static void main(String[] args) {
+        int[] arr={2,3,1,2,4,3};
+        int t=7;
+        MinimumSizeSubarraySum minimumSizeSubarraySum=new MinimumSizeSubarraySum();
+    }
 
+    public int minSubArrayLen3(int target, int[] nums) {
+        int curSum=0;
+        int start=0;
+        int res=Integer.MAX_VALUE;
+
+
+        int end=0;
+
+        while(end<nums.length){
+            curSum+=nums[end];
+            end++;
+            while(curSum>=target){
+                res=Math.min(res,end-start);
+                curSum-=nums[start];
+                start++;
+            }
+        }
+
+        return res == Integer.MAX_VALUE ? 0 : res;
     }
     public int minSubArrayLen(int s, int[] a) {
         if (a == null || a.length == 0)

@@ -1,8 +1,6 @@
 package main.FAANG.Backtracking;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 //Example 1:
 //Input: nums = [1,1,2]
@@ -14,9 +12,10 @@ public class PermutationsII {
 
 
     public static void main(String[] args) {
-        int[] arr={1,2,3};
+        int[] arr={1,2,2};
         PermutationsII permutationsII=new PermutationsII();
         System.out.println(permutationsII.permuteUnique(arr));
+        System.out.println(permutationsII.permuteUnique11(arr));
     }
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
@@ -34,6 +33,29 @@ public class PermutationsII {
                 used[i] = true;
                 tempList.add(nums[i]);
                 backtrack(list, tempList, nums, used);
+                used[i] = false;
+                tempList.remove(tempList.size() - 1);
+            }
+        }
+    }
+
+
+    public List<List<Integer>> permuteUnique11(int[] nums) {
+        Set<List<Integer>> list = new HashSet<>();
+        Arrays.sort(nums);
+        backtrack11(list, new ArrayList<>(), nums, new boolean[nums.length]);
+        return new ArrayList<>(list);
+    }
+
+    private void backtrack11(Set<List<Integer>> list, List<Integer> tempList, int [] nums, boolean [] used){
+        if(tempList.size() == nums.length){
+            list.add(new ArrayList<>(tempList));
+        } else{
+            for(int i = 0; i < nums.length; i++){
+                if(used[i]) continue;
+                used[i] = true;
+                tempList.add(nums[i]);
+                backtrack11(list, tempList, nums, used);
                 used[i] = false;
                 tempList.remove(tempList.size() - 1);
             }

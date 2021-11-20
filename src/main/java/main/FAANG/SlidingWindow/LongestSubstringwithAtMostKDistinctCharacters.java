@@ -1,6 +1,11 @@
 package main.FAANG.SlidingWindow;
 
 public class LongestSubstringwithAtMostKDistinctCharacters {
+
+    public static void main(String[] args) {
+        LongestSubstringwithAtMostKDistinctCharacters test=new LongestSubstringwithAtMostKDistinctCharacters();
+        System.out.println(test.lengthOfLongestSubstringKDistinct("caaabbdefggg",2));
+    }
     public int lengthOfLongestSubstringKDistinct(String s, int k) {
         int[] count = new int[256];     // there are 256 ASCII characters in the world
 
@@ -8,7 +13,8 @@ public class LongestSubstringwithAtMostKDistinctCharacters {
         int num = 0;
         int res = 0;
 
-        for (int j = 0; j < s.length(); j++) {
+        int j=0;
+        while (j < s.length()) {
             if (count[s.charAt(j)]++ == 0) {    // if count[s.charAt(j)] == 0, we know that it is a distinct character
                 num++;
             }
@@ -20,6 +26,7 @@ public class LongestSubstringwithAtMostKDistinctCharacters {
                 i++;
             }
             res = Math.max(res, j - i + 1);
+            j++;
         }
         return res;
     }

@@ -20,7 +20,7 @@ public class ConnectNodes {
     ConnectNodes connectNodes=new ConnectNodes();
     //connectNodes.connectNextPointer(root);
    // connectNodes.connectNext(root);
-    connectNodes.connect3(root);
+    connectNodes.connect5(root);
     printDLL(root);
     printDLL(root.left);
     printDLL(root.left.left);
@@ -157,7 +157,7 @@ public class ConnectNodes {
       }
       else
       {
-        if(!queue.isEmpty())
+          if(!queue.isEmpty())
           queue.offer(null);
       }
     }
@@ -169,20 +169,15 @@ public class ConnectNodes {
     }
     Queue<Node> Q = new LinkedList<Node>();
     Q.add(root);
-
     // Outer while loop which iterates over
     // each level
     while (Q.size() > 0) {
-
       // Note the size of the queue
       int size = Q.size();
-
       // Iterate over all the nodes on the current level
       for (int i = 0; i < size; i++) {
-
         // Pop a node from the front of the queue
         Node node = Q.poll();
-
         // This check is important. We don't want to
         // establish any wrong connections. The queue will
         // contain nodes from 2 levels at most at any
@@ -192,7 +187,6 @@ public class ConnectNodes {
         if (i < size - 1) {
           node.nextPointer = Q.peek();
         }
-
         // Add the children, if any, to the back of
         // the queue
         if (node.left != null) {
@@ -203,8 +197,34 @@ public class ConnectNodes {
         }
       }
     }
-
     // Since the tree has now been modified, return the root node
     return root;
+  }
+
+  public Node connect6(Node root) {
+
+    if (root == null)
+      return null;
+    Queue<Node> queue = new LinkedList<Node>();
+    queue.offer(root);
+    queue.offer(null);
+    while (!queue.isEmpty()){
+      Node  p=queue.poll();
+      if(p!=null)
+      {
+        p.nextPointer=queue.peek();
+        if(p.left!=null)
+          queue.offer(p.left);
+        if(p.right!=null)
+          queue.offer(p.right);
+      }
+      else
+      {
+        if(!queue.isEmpty())
+          queue.offer(null);
+      }
+    }
+    return root;
+
   }
 }

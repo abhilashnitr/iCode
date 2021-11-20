@@ -27,6 +27,7 @@ public class SortHashMap {
 
     Set<Entry<String,Integer>> entries=map.entrySet();
     List<Entry<String,Integer>> listEntries=new ArrayList<>(entries);
+
     Comparator<Entry<String,Integer>> sortMap=new Comparator<Entry<String, Integer>>() {
       @Override
       public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
@@ -39,7 +40,7 @@ public class SortHashMap {
         return i1-i2;
       }
     };
-    Collections.sort(listEntries,sortMap);
+    Collections.sort(listEntries,sortMap.reversed());
     for(Entry<String,Integer> entry:listEntries){
       System.out.println("Key :"+entry.getKey()+" value :"+entry.getValue());
     }

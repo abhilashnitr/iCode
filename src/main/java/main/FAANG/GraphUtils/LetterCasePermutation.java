@@ -5,6 +5,11 @@ import java.util.List;
 
 public class LetterCasePermutation {
 
+    public static void main(String[] args) {
+        LetterCasePermutation letterCasePermutation=new LetterCasePermutation();
+        System.out.println(letterCasePermutation.letterCasePermutation("abc"));
+    }
+
     public List<String> letterCasePermutation(String S) {
         if (S == null) {
             return new LinkedList<>();
@@ -22,13 +27,13 @@ public class LetterCasePermutation {
         }
         if (chs[pos] >= '0' && chs[pos] <= '9') {
             helper(chs, res, pos + 1);
-            return;
+
+        }else {
+            chs[pos] = Character.toLowerCase(chs[pos]);
+            helper(chs, res, pos + 1);
+
+            chs[pos] = Character.toUpperCase(chs[pos]);
+            helper(chs, res, pos + 1);
         }
-
-        chs[pos] = Character.toLowerCase(chs[pos]);
-        helper(chs, res, pos + 1);
-
-        chs[pos] = Character.toUpperCase(chs[pos]);
-        helper(chs, res, pos + 1);
     }
 }

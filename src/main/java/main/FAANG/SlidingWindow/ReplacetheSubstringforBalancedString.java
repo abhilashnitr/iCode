@@ -71,20 +71,28 @@ public class ReplacetheSubstringforBalancedString {
     //Space complexity: O(1)
 }
 /*
-The idea is to first count up each type of character. Since we know there are only 4 characters: Q, W, E, R, we can easily count them up using an int[] arr of length 4.
+The idea is to first count up each type of character. Since we know there are only 4 characters: Q, W, E, R, we can
+easily count them up using an int[] arr of length 4.
 
-Then once we count them up, we look at the number of occurrences of each and see if any of them > N/4 (where N is the length of the String). If they are, this means that we need this freq[character] - (N/4) number of this character in the substring we choose to replace.
+Then once we count them up, we look at the number of occurrences of each and see if any of them > N/4 (where N is the
+length of the String). If they are, this means that we need this freq[character] - (N/4) number of this character in
+the substring we choose to replace.
 
-E.g. If we have N = 12 and freq[Q] = freq[0] = 6. Since we know each character must occur N/4 = 12/4 = 3 times. We have 3 extra Qs. So we need to make sure our substring at the end has 3 Qs in it. The same principle applies when there are multiple characters > (N/4).
+E.g. If we have N = 12 and freq[Q] = freq[0] = 6. Since we know each character must occur N/4 = 12/4 = 3 times. We have
+3 extra Qs. So we need to make sure our substring at the end has 3 Qs in it. The same principle applies when there are
+multiple characters > (N/4).
 
 Essentially, we reduced the problem to finding a minimum substring containing a certain number of each character.
 
 Then we go to the freq array and subtract (N/4) from each of freq[Q], freq[W], freq[E], freq[R].
-If it is below 0 (this means our substring does not need to contain this letter since we are already in demand of this letter), then we just set it to 0.
+If it is below 0 (this means our substring does not need to contain this letter since we are already in demand of this
+letter), then we just set it to 0.
 
 Then for our sliding window approach - see more: https://www.geeksforgeeks.org/window-sliding-technique/
 
-We update freq[] so that freq[char] always represents how many characters we need still of each char to get the substring that we need. It is okay for freq[char] to be < 0 as this mean we have more characters than we need (which is fine). Each time we have an eligible substring, we update our minLen variable and try to shrink the window from the left as much as possible.
+We update freq[] so that freq[char] always represents how many characters we need still of each char to get the substring
+that we need. It is okay for freq[char] to be < 0 as this mean we have more characters than we need (which is fine).
+Each time we have an eligible substring, we update our minLen variable and try to shrink the window from the left as much as possible.
 
 In the end we get the minimum length of a substring containing at least the characters we need to replace with other characters.
 

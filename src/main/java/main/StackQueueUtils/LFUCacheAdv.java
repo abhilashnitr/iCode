@@ -33,6 +33,34 @@ public class LFUCacheAdv {
     setFrequency(nFr + 1, key);
   }
 
+  // return a frequency value for a given key and remove a given key from a
+  // frequency map
+  private int getPrevFrequency(int key) {
+    for (Map.Entry<Integer, LinkedList<Integer>> entry : freqMap.entrySet()) {
+      LinkedList<Integer> list = entry.getValue(); // list of keys with the same frequency
+      // check a list wheather it contains a given key
+      if (list.contains((Integer) key)) {
+        int nFr = entry.getKey(); // a frequencyvalue for a given key (return value)
+        removeKey(key, list, nFr); // since a frequencyvalue for a key will be increased
+        return nFr;
+      }
+    }
+    return 0;
+  }
+
+  // add a key to a list associated with a frequency value
+  private void setFrequency(int nFr, int key) {
+    if (!freqMap.containsKey(nFr)) {
+      freqMap.put(nFr, new LinkedList<>());
+    }
+    freqMap.get(nFr).addLast((Integer) key);
+  }
+
+
+
+
+
+
   public void put(int key, int value) {
     if (capacity == 0 || value < 0) {
       return;
@@ -59,20 +87,7 @@ public class LFUCacheAdv {
     cache.put(key, value); // executed for all cases
   }
 
-  // return a frequency value for a given key and remove a given key from a
-  // frequency map
-  private int getPrevFrequency(int key) {
-    for (Map.Entry<Integer, LinkedList<Integer>> entry : freqMap.entrySet()) {
-      LinkedList<Integer> list = entry.getValue(); // list of keys with the same frequency
-      // check a list wheather it contains a given key
-      if (list.contains((Integer) key)) {
-        int nFr = entry.getKey(); // a frequencyvalue for a given key (return value)
-        removeKey(key, list, nFr); // since a frequencyvalue for a key will be increased
-        return nFr;
-      }
-    }
-    return 0;
-  }
+
 
   // remove a key fron a list;
   // remove an entry from a frequence map if only one key was in a list
@@ -83,14 +98,27 @@ public class LFUCacheAdv {
     }
   }
 
-  // add a key to a list associated with a frequency value
-  private void setFrequency(int nFr, int key) {
-    if (!freqMap.containsKey(nFr)) {
-      freqMap.put(nFr, new LinkedList<>());
-    }
-    freqMap.get(nFr).addLast((Integer) key);
+
+
+  public static void main(String[] args) {
+    LFUCacheAdv lfuCache=new LFUCacheAdv(5);
+    lfuCache.put(1,1);
+    lfuCache.put(2,2);
+    lfuCache.put(3,3);
+    lfuCache.put(1,10);
+    lfuCache.get(1);
+    lfuCache.put(3,30);
+    lfuCache.put(4, 4);
+    lfuCache.put(5, 5);
+    lfuCache.put(6, 6);
+
+
+
   }
+
 }
+
+
 
 
 /*
@@ -100,11 +128,13 @@ TreeMap<Integer, main.LinkedList> freqMap
 is the auxiliary data structure that keeps how frequently the key is used both get and put operations.
 
 freqMap's key is a frequency of accessing operations applied to keys from a cache.
-By default, TreeMap preserves ascending order of keys. So when we need the least frequently used item in LFUCache, invoking a method firstEntry gives us the entry with the least frequency
+By default, TreeMap preserves ascending order of keys. So when we need the least frequently used item in LFUCache,
+invoking a method firstEntry gives us the entry with the least frequency
 A frequency is only positive value.
 
 freqMap's value is a list of keys from a cache that have the same frequency.
-It works like a queue. New values are added to the end of a list. When there are two or more keys that have the same frequency, the least recently used key is the first.
+It works like a queue. New values are added to the end of a list. When there are two or more keys that have the same
+frequency, the least recently used key is the first.
 if key (frequency) is mapping to an empty list, this entry will be removed.
 
 Some examples how cache and freqMap are changing while LFUCache is invoked alternately by get and put

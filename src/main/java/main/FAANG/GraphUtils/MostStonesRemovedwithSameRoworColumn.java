@@ -5,7 +5,8 @@ On a 2D plane, we place n stones at some integer coordinate points. Each coordin
 
 A stone can be removed if it shares either the same row or the same column as another stone that has not been removed.
 
-Given an array stones of length n where stones[i] = [xi, yi] represents the location of the ith stone, return the largest possible number of stones that can be removed.
+Given an array stones of length n where stones[i] = [xi, yi] represents the location of the ith stone,
+return the largest possible number of stones that can be removed.
 */
 
 import java.util.HashSet;
@@ -26,13 +27,14 @@ public class MostStonesRemovedwithSameRoworColumn {
     int[] parent;
 
     int find(Integer x) {
-        return parent[x] == x ? x : find(parent[x]);
+        if(parent[x] == x )
+            return x;
+        return find(parent[x]);
     }
 
     int removeStones(int[][]  stones) {
 
         if (stones.length==0) return 0;
-
         int m = stones.length;
 
         parent=new int[m];

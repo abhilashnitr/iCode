@@ -7,10 +7,11 @@ import java.util.List;
 public class Permutations {
 
     public static void main(String[] args) {
-        int[] arr={1,1,2};
+        int[] arr1={1,2,3};
+        int[] arr2={1,1,2};
         Permutations permutations=new Permutations();
-        System.out.println(permutations.permute(arr));
-        System.out.println(permutations.permuteUnique(arr));
+        System.out.println(permutations.permute(arr1));
+        System.out.println(permutations.permuteUnique(arr2));
     }
 
 
@@ -34,6 +35,19 @@ public class Permutations {
         }
     }
 
+    private void backtrackUn(List<List<Integer>> list, List<Integer> tempList, int [] nums){
+        if(tempList.size() == nums.length){
+            list.add(new ArrayList<>(tempList));
+        } else{
+            for(int i = 0; i < nums.length; i++){
+                if(tempList.contains(nums[i])) continue; // element already exists, skip
+                tempList.add(nums[i]);
+                backtrackUn(list, tempList, nums);
+                tempList.remove(tempList.size() - 1);
+            }
+        }
+    }
+
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
         Arrays.sort(nums);
@@ -46,7 +60,7 @@ public class Permutations {
             list.add(new ArrayList<>(tempList));
         } else{
             for(int i = 0; i < nums.length; i++){
-                if(used[i] || i > 0 && nums[i] == nums[i-1] && !used[i - 1]) continue;
+                if(used[i] || ((i > 0) && (nums[i] == nums[i-1]) && (used[i - 1]==false) ) ) continue;
                 used[i] = true;
                 tempList.add(nums[i]);
                 backtrack(list, tempList, nums, used);

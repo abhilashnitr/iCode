@@ -6,6 +6,11 @@ public class GraphValidTree {
 
     public static void main(String[] args) {
 
+        int nodes=5;
+        int[][] edges={{0,1},{0,2},{0,3},{1,4}};
+        GraphValidTree graphValidTree=new GraphValidTree();
+        System.out.println(graphValidTree.validTree(nodes,edges));
+
     }
     public  boolean validTree(int n, int[][] edges) {
         // initialize n isolated islands

@@ -9,7 +9,23 @@ public class DeleteNodesAndReturnForest {
 //
 //Return the roots of the trees in the remaining forest. You may return the result in any order.
 
-    public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
+
+    public static void main(String[] args) {
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
+        int[] to_be_deleted = new int[]{1};
+
+        System.out.println(delNodes(root,to_be_deleted));
+
+    }
+    public static List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
         if (root == null) return new ArrayList<>();
 
         Set<TreeNode> resSet = new HashSet<>();
@@ -30,11 +46,11 @@ public class DeleteNodesAndReturnForest {
             }
             if (node.left != null) {
                 q.offer(node.left);
-                if (toDelete.contains(node.left.val)) node.left = null;
+                if (toDelete.contains(node.val)) node.left = null;
             }
             if (node.right != null) {
                 q.offer(node.right);
-                if (toDelete.contains(node.right.val)) node.right = null;
+                if (toDelete.contains(node.val)) node.right = null;
             }
         }
         return new ArrayList<>(resSet);

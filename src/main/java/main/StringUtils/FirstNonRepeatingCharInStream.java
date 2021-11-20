@@ -56,10 +56,10 @@ public class FirstNonRepeatingCharInStream {
 
     printFirstNonRepeatingCharactersInStream(stream);
 
-    String str = "geeksforeeks";
-    int index =  firstNonRepeating(str);
-    System.out.println(index == -1 ? "Either all characters are repeating or string " +
-        "is empty" : "First non-repeating character is " +  str.charAt(index));
+//    String str = "geeksforeeks";
+//    int index =  firstNonRepeating(str);
+//    System.out.println(index == -1 ? "Either all characters are repeating or string " +
+//        "is empty" : "First non-repeating character is " +  str.charAt(index));
 
   }
 

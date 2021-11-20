@@ -20,11 +20,11 @@ public class TesthashMap {
     map.put(p3,"C");
 
 
-    System.out.println(map.size()+" "+map.get(p1)+" "+map.get(p2)+" "+map.get(p3));
+    System.out.println("mapSize" + map.size()+" "+map.get(p1)+" "+map.get(p2)+" "+map.get(p3));
 
     for(Entry<Person, String> entry:map.entrySet()){
 
-      System.out.println(entry.getValue()+" "+entry.getKey());
+      System.out.println(" entry key and value"+entry.getValue()+" "+entry.getKey());
 
     }
 
@@ -54,15 +54,15 @@ public class TesthashMap {
           '}';
     }
 
-//    @Override
-//    public int hashCode () {
-//      return 1;
-//    }
+    @Override
+    public int hashCode () {
+      return 1;
+    }
 
-//    @Override
-//    public boolean equals (Object o) {
-//      return true;
-//    }
+    @Override
+    public boolean equals (Object o) {
+      return true;
+    }
 
 
 //    @Override
@@ -78,10 +78,10 @@ public class TesthashMap {
 //          name.equals(person.name);
 //    }
 
-    @Override
-    public int hashCode () {
-      return Objects.hash(id, name);
-    }
+//    @Override
+//    public int hashCode () {
+//      return Objects.hash(id, name);
+//    }
 
     public Person (int id,String name) {
       this.id = id;

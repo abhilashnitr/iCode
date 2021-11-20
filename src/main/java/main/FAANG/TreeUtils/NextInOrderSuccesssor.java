@@ -16,6 +16,7 @@ public class NextInOrderSuccesssor {
     root.right.right = new Node(7);
 
     next.connectNext(root);
+
     printDLL(next.head);
 
   }

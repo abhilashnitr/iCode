@@ -5,41 +5,55 @@ import java.util.List;
 import java.util.Stack;
 
 public class MinimumCostTreeFromLeafValues {
-    List<Integer> result = new ArrayList();
-    Stack<TreeNode> s1 = new Stack();
-    Stack<TreeNode> s2 = new Stack();
 
-    public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
-        populate(root1, s1);
-        populate(root2, s2);
-        while (!s1.isEmpty() && !s2.isEmpty()) {
-            TreeNode r1 = s1.peek();
-            TreeNode r2 = s2.peek();
-            if (r1.val > r2.val) {
-                result.add(r2.val);
-                s2.pop();
-                populate(r2.right, s2);
-            } else {
-                result.add(r1.val);
-                s1.pop();
-                populate(r1.right, s1);
+    public static void main(String[] args) {
+        int[] arr={6,2,4,8};
+        System.out.println(mctFromLeafValues(arr));
+    }
+
+    public static int mctFromLeafValues(int[] A) {
+        int res = 0;
+        Stack<Integer> stack = new Stack<>();
+        stack.push(Integer.MAX_VALUE);
+        for (int a : A) {
+            while (stack.peek() <= a) {
+                int mid = stack.pop();
+                res += mid * Math.min(stack.peek(), a);
             }
-
+            stack.push(a);
         }
-        Stack<TreeNode> s = s1.isEmpty() ? s2 : s1;
-        while (!s.isEmpty()) {
-            TreeNode r = s.pop();
-            result.add(r.val);
-            populate(r.right, s);
+        while (stack.size() > 2) {
+            res += stack.pop() * stack.peek();
         }
-        return result;
+        return res;
     }
 
-    public void populate(TreeNode root, Stack<TreeNode> s) {
-        if (root == null) {
-            return;
-        }
-        s.add(root);
-        populate(root.left, s);
+
+
+    //dp[i][j]=dp[i][k]+dp[k][j]+max(A[i....k])*max(A[k....j])  k = i to < j
+
+    public int mctFromLeafValuesDp(int[] arr) {
+        int n = arr.length;
+        int[][] dp = new int[n][n];
+        return dfs(arr, 0, n - 1, dp);
     }
+
+    public int dfs(int[] arr, int s, int e, int[][] dp) {
+        if (s == e) return 0;
+        if (dp[s][e] > 0) return dp[s][e];
+        int ans = Integer.MAX_VALUE;
+        for (int i = s; i < e; i++) {
+            int left = dfs(arr, s, i, dp);
+            int right = dfs(arr, i + 1, e, dp);
+            int maxLeft = 0, maxRight = 0;
+            for (int j = s; j <= i; j++) maxLeft = Math.max(maxLeft, arr[j]);
+            for (int j = i + 1; j <= e; j++) maxRight = Math.max(maxRight, arr[j]);
+            ans = Math.min(ans, left + right + maxLeft * maxRight);
+        }
+        dp[s][e] = ans;
+        return ans;
+    }
+
+
+
 }

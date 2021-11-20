@@ -17,10 +17,11 @@ public class CheckConcurrentModification {
     Iterator<Integer> itr1 = list.iterator();
     while (itr1.hasNext()){
       int a=itr1.next();
-      if (a == 2) {
+
+      if (a == 6) {
        //list.add(11);     leads to ConcurrentModificationException
        //list.remove();             ConcurrentModificationException
-       // list.add(2,11);           ConcurrentModificationException
+       // list.add(2,11);          // ConcurrentModificationException
       }
       System.out.print(a+" ");
     }
@@ -28,10 +29,10 @@ public class CheckConcurrentModification {
     Iterator<Integer> itr = list.iterator();
     while (itr.hasNext()) {
 
-      if (itr.next() == 2) {
-        // will not throw Exception
+
+        if(itr.next()==7)
         itr.remove();
-      }
+
     }
     System.out.println(list);
 

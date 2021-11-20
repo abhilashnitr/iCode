@@ -7,6 +7,13 @@ import java.util.List;
 public class Subsets {
 
 
+    public static void main(String[] args) {
+        int[] nums1={1,2,3};
+        int[] nums2={1,2,3};
+        Subsets subsets=new Subsets();
+        System.out.println(subsets.subsets(nums1));
+        System.out.println(subsets.subsetsWithDup(nums2));
+    }
     //Given an integer array nums of unique elements, return all possible subsets (the power set).
     //
     //The solution set must not contain duplicate subsets. Return the solution in any order.

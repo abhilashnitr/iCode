@@ -1,5 +1,5 @@
 package main.CoreJavaUtils;
-class Course
+class Course implements Cloneable
 {
     String subject1;
 
@@ -14,6 +14,21 @@ class Course
         this.subject2 = sub2;
 
         this.subject3 = sub3;
+    }
+
+
+    protected Object clone() throws CloneNotSupportedException
+    {
+        return super.clone();
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "subject1='" + subject1 + '\'' +
+                ", subject2='" + subject2 + '\'' +
+                ", subject3='" + subject3 + '\'' +
+                '}';
     }
 }
 
@@ -35,6 +50,15 @@ class Student implements Cloneable
     }
 
     //Default version of clone() method. It creates shallow copy of an object.
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", course=" + course +
+                '}';
+    }
 
     protected Object clone() throws CloneNotSupportedException
     {
@@ -65,7 +89,9 @@ public class ShallowCopyInJava {
 
         //Printing the subject3 of 'student1'
 
-        System.out.println(student1.course.subject3);         //Output : Biology
+        System.out.println(student1);         //Output : Biology
+
+        System.out.println(student2);
 
         //Changing the subject3 of 'student2'
 
@@ -73,6 +99,8 @@ public class ShallowCopyInJava {
 
         //This change will be reflected in original student 'student1'
 
-        System.out.println(student1.course.subject3);       //Output : Maths
+        System.out.println(student1);
+        System.out.println(student2);
+        //Output : Maths
     }
 }
