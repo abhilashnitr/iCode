@@ -1,6 +1,5 @@
 package main.FAANG.TwoPointers;
 
-import javafx.util.Pair;
 
 import java.util.*;
 
@@ -24,24 +23,24 @@ public class LC826 {
         int[] profit={10,20,30,40,50};
         int[] worker={4,5,6,7};
         LC826 lc826=new LC826();
-        System.out.println(lc826.maxProfitAssignment(diff,profit,worker));
+        System.out.println(lc826.maxProfitAssignmentWithDp(diff,profit,worker));
 
     }
 
-    public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
-        List<Pair<Integer, Integer>> jobs = new ArrayList<>();
-        int N = profit.length, res = 0, i = 0, best = 0;
-        for (int j = 0; j < N; ++j)
-            jobs.add(new Pair<Integer, Integer>(difficulty[j], profit[j]));
-        Collections.sort(jobs, Comparator.comparing(Pair::getKey));
-        Arrays.sort(worker);
-        for (int ability : worker) {
-            while (i < N && ability >= jobs.get(i).getKey())
-                best = Math.max(jobs.get(i++).getValue(), best);
-            res += best;
-        }
-        return res;
-    }
+//    public int maxProfitAssignment(int[] difficulty, int[] profit, int[] worker) {
+//        List<Pair<Integer, Integer>> jobs = new ArrayList<>();
+//        int N = profit.length, res = 0, i = 0, best = 0;
+//        for (int j = 0; j < N; ++j)
+//            jobs.add(new Pair<Integer, Integer>(difficulty[j], profit[j]));
+//        Collections.sort(jobs, Comparator.comparing(Pair::getKey));
+//        Arrays.sort(worker);
+//        for (int ability : worker) {
+//            while (i < N && ability >= jobs.get(i).getKey())
+//                best = Math.max(jobs.get(i++).getValue(), best);
+//            res += best;
+//        }
+//        return res;
+//    }
 
     public int maxProfitAssignmentWithDp(int[] difficulty, int[] profit, int[] worker) {
         int[] dp = new int[20];

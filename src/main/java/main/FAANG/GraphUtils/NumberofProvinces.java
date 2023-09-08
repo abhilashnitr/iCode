@@ -24,9 +24,10 @@ question, you can track visited by editing the original matrix. In this question
 
 I hope that helped.
 * */
-public class NumberofProvinces {
+public class  NumberofProvinces {
     public static void main(String[] args) {
 
+        int[][] M = {{},{},{}};
     }
 
     /*
@@ -35,16 +36,7 @@ Complexity Analysis
 Time complexity : O(n^2). The complete matrix of size n^2 is traversed.
 Space complexity : O(n)O(n). visited array of size nn is used.
 */
-    public void dfs(int[][] M, int[] visited, int i) {
-        for (int j = 0; j < M[0].length; j++) {
-            if (M[i][j] == 1 && visited[j] == 0) {
-                //We found an unvisited person in the current friend cycle
-                visited[j] = 1;
-                //Start DFS on this new found person
-                dfs(M, visited, j);
-            }
-        }
-    }
+
     public int findCircleNum(int[][] M) {
         int[] visited = new int[M.length];//visited[i] means if ith person is visited in this algorithm
         int count = 0;
@@ -56,6 +48,18 @@ Space complexity : O(n)O(n). visited array of size nn is used.
         }
         return count;
     }
+
+    public void dfs(int[][] M, int[] visited, int i) {
+        for (int j = 0; j < M[0].length; j++) {
+            if (M[i][j] == 1 && visited[j] == 0) {
+                //We found an unvisited person in the current friend cycle
+                visited[j] = 1;
+                //Start DFS on this new found person
+                dfs(M, visited, j);
+            }
+        }
+    }
+
 
     /*
     BFS
