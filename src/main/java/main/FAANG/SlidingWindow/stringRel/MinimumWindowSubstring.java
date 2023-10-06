@@ -13,7 +13,7 @@ public class MinimumWindowSubstring {
 
     public static void main(String[] args) {
         MinimumWindowSubstring m=new MinimumWindowSubstring();
-        String s="ADOAABAAAODEBANC";
+        String s="ADOAABAAQAEBANC";
         String t="AAA";
         System.out.println(m.minWindow(s,t));
     }

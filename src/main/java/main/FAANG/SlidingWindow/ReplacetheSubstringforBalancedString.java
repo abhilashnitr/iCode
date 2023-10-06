@@ -18,7 +18,10 @@ public class ReplacetheSubstringforBalancedString {
         return fulfilled;
     }
 
-    // Q 0 W 1 E 2 R 3
+    // Q 0
+    // W 1
+    // E 2
+    // R 3
     private int charToIdx(char c) {
         switch(c) {
             case 'Q': return 0;
@@ -69,6 +72,23 @@ public class ReplacetheSubstringforBalancedString {
     }
     //Time complexity: O(N)
     //Space complexity: O(1)
+
+
+    public int balancedString2(String s) {
+        int[] count = new int[128];
+        int n = s.length(), res = n, i = 0, k = n / 4;
+        for (int j = 0; j < n; ++j) {
+            ++count[s.charAt(j)];
+        }
+        for (int j = 0; j < n; ++j) {
+            --count[s.charAt(j)];
+            while (i < n && count['Q'] <= k && count['W'] <= k && count['E'] <= k && count['R'] <= k) {
+                res = Math.min(res, j - i + 1);
+                ++count[s.charAt(i++)];
+            }
+        }
+        return res;
+    }
 }
 /*
 The idea is to first count up each type of character. Since we know there are only 4 characters: Q, W, E, R, we can

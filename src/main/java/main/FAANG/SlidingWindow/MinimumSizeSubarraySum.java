@@ -47,6 +47,7 @@ public class MinimumSizeSubarraySum {
 
         return min == Integer.MAX_VALUE ? 0 : min;
     }
+
     public int minSubArrayLen2c(int s, int[] A) {
         int i = 0, n = A.length, res = n + 1;
         for (int j = 0; j < n; ++j) {

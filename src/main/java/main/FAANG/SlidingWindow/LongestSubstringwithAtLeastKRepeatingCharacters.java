@@ -8,36 +8,57 @@ package main.FAANG.SlidingWindow;
 public class LongestSubstringwithAtLeastKRepeatingCharacters {
 
     public int longestSubstring(String s, int k) {
-        int d = 0;
-
-        for (int numUniqueTarget = 1; numUniqueTarget <= 26; numUniqueTarget++)
-            d = Math.max(d, longestSubstringWithNUniqueChars(s, k, numUniqueTarget));
-
-        return d;
-    }
-
-    private int longestSubstringWithNUniqueChars(String s, int k, int numUniqueTarget) {
-        int[] map = new int[128];
-        int numUnique = 0; // counter 1
-        int numNoLessThanK = 0; // counter 2
-        int begin = 0, end = 0;
-        int d = 0;
-
-        while (end < s.length()) {
-            if (map[s.charAt(end)]++ == 0) numUnique++; // increment map[c] after this statement
-            if (map[s.charAt(end++)] == k) numNoLessThanK++; // inc end after this statement
-
-            while (numUnique > numUniqueTarget) {
-                if (map[s.charAt(begin)]-- == k) numNoLessThanK--; // decrement map[c] after this statement
-                if (map[s.charAt(begin++)] == 0) numUnique--; // inc begin after this statement
-            }
-
-            // if we found a string where the number of unique chars equals our target
-            // and all those chars are repeated at least K times then update max
-            if (numUnique == numUniqueTarget && numUnique == numNoLessThanK)
-                d = Math.max(end - begin, d);
+        if (s == null || s.isEmpty() || k > s.length()) {
+            return 0;
         }
 
-        return d;
+        int max = 0; // length of longest substring T
+        for (int numUniqueTarget = 1; numUniqueTarget <= 26; numUniqueTarget++) {    // numUniqueTarget = target number of unique letters in substring T
+            max = Math.max(max, longestSubstringWithTargetUniqueLetters(s, k, numUniqueTarget));
+        }
+
+        return max;
+    }
+
+    // return the length of longest substring T with target number of unique letters
+    private int longestSubstringWithTargetUniqueLetters(String s, int k, int numUniqueTarget) {
+        int[] map = new int[26]; // letter -> freq
+        int numUnique = 0;   // # of unique letters
+        int numAtLeastK = 0; // # of unique letters with occurrence >= k
+        int max = 0; // length of longest substring T with target number of unique letters
+
+        // slding window
+        // if numUnique <= numUniqueTarget, expand right end, update numUnique & numAtLeastK
+        // if numUnique > numUniqueTarget, shrink left end
+        int left = 0;
+        for (int right = 0; right < s.length(); right++) {
+            char rChar = s.charAt(right); // new rightmost char
+            if (map[rChar - 'a'] == 0) {
+                numUnique++;
+            }
+            map[rChar - 'a']++;
+            if (map[rChar - 'a'] == k) {
+                numAtLeastK++;
+            }
+
+            while (numUnique > numUniqueTarget) {
+                char lChar = s.charAt(left); // leftmost char in current window
+                left++;
+                if (map[lChar - 'a'] == 1) {
+                    numUnique--;
+                }
+                if (map[lChar - 'a'] == k) {
+                    numAtLeastK--;
+                }
+                map[lChar - 'a']--;
+            }
+
+            // now numUnique <= numUniqueTarget
+            if (numUnique == numUniqueTarget && numUnique == numAtLeastK) {
+                max = Math.max(max, right - left + 1);
+            }
+        }
+
+        return max;
     }
 }
