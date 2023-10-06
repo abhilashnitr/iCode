@@ -1,6 +1,7 @@
 package main.FAANG.SlidingWindow;
 
 public class LongestSubstringwithAtMostKDistinctCharacters {
+//Given a string, find the length of the longest substring T that contains at most k distinct characters.
 
     public static void main(String[] args) {
         LongestSubstringwithAtMostKDistinctCharacters test=new LongestSubstringwithAtMostKDistinctCharacters();
@@ -10,18 +11,18 @@ public class LongestSubstringwithAtMostKDistinctCharacters {
         int[] count = new int[256];     // there are 256 ASCII characters in the world
 
         int i = 0;  // i will be behind j
-        int num = 0;
+        int distinctNumCount = 0;
         int res = 0;
 
         int j=0;
         while (j < s.length()) {
             if (count[s.charAt(j)]++ == 0) {    // if count[s.charAt(j)] == 0, we know that it is a distinct character
-                num++;
+                distinctNumCount++;
             }
-            while (num > k && i < s.length()) {     // sliding window
+            while (distinctNumCount > k && i < s.length()) {     // sliding window
                 count[s.charAt(i)]--;
                 if (count[s.charAt(i)] == 0){
-                    num--;
+                    distinctNumCount--;
                 }
                 i++;
             }

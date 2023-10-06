@@ -15,12 +15,16 @@ public class MaximumSizeSubarraySumEqualsk {
     //Use DP. Store the sum from 0 to i inclusive as map key, and i as value. For i+1, if the sum from 0 to i+1 is k, then return. Otherwise, find if sum - k is in the map. If so, then the range j+1 (where j is the value of key sum-k) to i sums to k.
     public int maxSubArrayLen(int[] nums, int k) {
         int sum = 0, max = 0;
-        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             sum = sum + nums[i];
-            if (sum == k) max = i + 1;
-            else if (map.containsKey(sum - k)) max = Math.max(max, i - map.get(sum - k));
-            if (!map.containsKey(sum)) map.put(sum, i);
+            if (sum == k)
+                max = i + 1;
+            else if (map.containsKey(sum - k))
+                max = Math.max(max, i - map.get(sum - k));
+
+            if (!map.containsKey(sum))
+                map.put(sum, i);
         }
         return max;
     }

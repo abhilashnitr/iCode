@@ -12,9 +12,6 @@ public class LongestSubstringWithoutRepeatingCharacters {
     }
 
     public int lengthOfLongestSubstring(String s) {
-
-
-
 //        int[] cache =new int[256];
 //        int start=0;
 //        int res=0;
@@ -24,8 +21,6 @@ public class LongestSubstringWithoutRepeatingCharacters {
 //                start=Math.max(start,cache[ch-'a']);
 //            cache[ch-'a']=end+1;
 //            res=Math.max(res,end-start+1);
-//
-//
 //        }
 //        return res;
 

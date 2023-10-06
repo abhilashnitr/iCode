@@ -11,7 +11,11 @@ of this subarr ay is less than or equal to limit.
 */
 public class LongestContinuousSubarrayWithAbsoluteDiffLessThanorEqualtoLimit {
 
-
+    public static void main(String[] args) {
+        LongestContinuousSubarrayWithAbsoluteDiffLessThanorEqualtoLimit ll = new LongestContinuousSubarrayWithAbsoluteDiffLessThanorEqualtoLimit();
+        int[] num = {8,2,4,7};
+        System.out.println(ll.longestSubarray(num,4));
+    }
     public int longestSubarray(int[] nums, int limit) {
         Deque<Integer> maxDeque = new LinkedList<>();
         Deque<Integer> minDeque = new LinkedList<>();

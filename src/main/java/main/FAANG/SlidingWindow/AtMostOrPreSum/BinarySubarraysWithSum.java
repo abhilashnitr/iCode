@@ -8,7 +8,7 @@ public class BinarySubarraysWithSum {
     public static void main(String[] args) {
         BinarySubarraysWithSum s=new BinarySubarraysWithSum();
         int[] a={1,0,1,0,1};
-        System.out.println(s.numSubarraysWithSum(a,2));
+        System.out.println(s.numSubarraysWithSum2(a,2));
     }
 
 //Count the occurrence of all prefix sum.

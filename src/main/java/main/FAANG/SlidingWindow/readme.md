@@ -45,6 +45,7 @@ Step3: Store the current maximum window size or minimum window size or number of
 424 395(skip) 340 159 1004
 1456 325 209 1358 1234
 239 713 560 974 713
+862 30 
 
 R- 992 438 930 1438 395(D) 
 
